@@ -1,37 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta name="google-site-verification" content="siAxN5KGdSmVmRswhL_gi7oBNIBLPPN63_Y33f9cbYQ" />
-<!-- Google Search & Browser Tab Favicon -->
-<link rel="icon" type="image/png" href="https://paradoverse.github.io/favicon.png">
-<link rel="apple-touch-icon" href="https://paradoverse.github.io/favicon.png">
-
-<!-- Organization Logo Schema for Google Search -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "Paradoverse",
-  "url": "https://paradoverse.github.io/",
-  "logo": "https://paradoverse.github.io/favicon.png"
-}
-</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Parado Verse</title>
+<title>PARADOVERSE | Beyond Creativity — Video Editing, VFX &amp; Media Promotion Agency</title>
 <meta name="description" content="Paradoverse is a digital media agency for video editing, Reels, Shorts, VFX, motion graphics, paid song and movie promotion, and brand campaigns.">
 <meta name="keywords" content="Paradoverse, Paradoverse media, video editing agency, Reels editing, Shorts editing, cinematic video editing, VFX, motion graphics, song promotion, movie promotion, digital media agency">
 <meta name="author" content="Paradoverse">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 <meta name="google-site-verification" content="7EcaU4o4fyzvW8LepRKogTChY_s2AFJ9WI_XDMhqNBg">
-<link rel="canonical" href="https://paradoverse.github.io/">
+<link rel="canonical" href="https://paradoverse.netlify.app/">
 
 <!-- Open Graph / WhatsApp / Instagram Preview Metadata -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Paradoverse">
 <meta property="og:title" content="PARADOVERSE | Beyond Creativity — Video Editing, VFX &amp; Promotion">
 <meta property="og:description" content="We edit videos for creators and brands, and promote songs, movies and content so more of the right people see them.">
-<meta property="og:url" content="https://paradoverse.github.io/">
+<meta property="og:url" content="https://paradoverse.netlify.app/">
 
 <!-- Twitter Card Metadata -->
 <meta name="twitter:card" content="summary_large_image">
@@ -46,7 +31,7 @@
   "name": "Paradoverse",
   "alternateName": "PARADOVERSE | Beyond Creativity",
   "description": "Paradoverse is a digital media agency for video editing, VFX, motion graphics, paid promotion and campaigns.",
-  "url": "https://paradoverse.github.io/",
+  "url": "https://paradoverse.netlify.app/",
   "telephone": "+91-70790-50010",
   "email": "paradoverse69@gmail.com",
   "priceRange": "₹500 - ₹1,00,000",
@@ -1289,9 +1274,475 @@ footer {
     font-size: 12.2px;
   }
 }
+
+/* === PARADOVERSE 60FPS LIQUID-GLASS OTP LOCK GATE === */
+body.pv-locked {
+  overflow: hidden !important;
+  touch-action: none;
+}
+body > *:not(#pvGateOverlay):not(#toastBanner) {
+  transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+body.pv-locked > *:not(#pvGateOverlay):not(#toastBanner) {
+  opacity: 0.14;
+  pointer-events: none;
+  user-select: none;
+}
+.pv-gate-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background:
+    radial-gradient(ellipse 65% 50% at 15% 15%, rgba(41, 151, 255, 0.22), transparent 58%),
+    radial-gradient(ellipse 60% 50% at 85% 85%, rgba(88, 213, 255, 0.18), transparent 58%),
+    rgba(2, 4, 10, 0.92);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.34s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.34s ease;
+  will-change: opacity;
+}
+.pv-gate-overlay.pv-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+.pv-gate-overlay.pv-hidden .pv-gate-frame {
+  transform: translate3d(0, 14px, 0) scale(0.96);
+  opacity: 0;
+}
+/* Pure GPU Radial Glow Orbs (zero filter:blur lag) */
+.pv-gate-orb {
+  position: fixed;
+  border-radius: 50%;
+  pointer-events: none;
+  will-change: transform;
+  animation: pvOrbFloat 14s ease-in-out infinite alternate;
+}
+.pv-gate-orb-1 {
+  width: 480px;
+  height: 480px;
+  top: -120px;
+  left: -100px;
+  background: radial-gradient(circle, rgba(41, 151, 255, 0.26) 0%, rgba(41, 151, 255, 0.06) 45%, transparent 72%);
+}
+.pv-gate-orb-2 {
+  width: 440px;
+  height: 440px;
+  bottom: -110px;
+  right: -90px;
+  background: radial-gradient(circle, rgba(88, 213, 255, 0.22) 0%, rgba(88, 213, 255, 0.05) 45%, transparent 72%);
+  animation-delay: -7s;
+}
+@keyframes pvOrbFloat {
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(18px, -16px, 0); }
+}
+.pv-gate-frame {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  padding: 1.5px;
+  border-radius: 30px;
+  background: linear-gradient(140deg, rgba(125, 211, 252, 0.55) 0%, rgba(41, 151, 255, 0.2) 40%, rgba(255, 255, 255, 0.08) 65%, rgba(88, 213, 255, 0.45) 100%);
+  box-shadow: 0 28px 72px rgba(0, 0, 0, 0.78), 0 0 44px rgba(41, 151, 255, 0.16);
+  transform: translate3d(0, 0, 0) scale(1);
+  transition: transform 0.34s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.28s ease;
+  will-change: transform, opacity;
+}
+.pv-gate-card {
+  position: relative;
+  width: 100%;
+  padding: 30px 26px 22px;
+  border-radius: 28.5px;
+  background: linear-gradient(160deg, rgba(16, 25, 46, 0.94) 0%, rgba(8, 13, 25, 0.98) 60%, rgba(4, 7, 16, 0.99) 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22);
+  color: #f8fafc;
+  overflow: hidden;
+}
+.pv-gate-card::before {
+  content: "";
+  position: absolute;
+  top: -70px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 250px;
+  height: 130px;
+  background: radial-gradient(ellipse, rgba(88, 213, 255, 0.2), transparent 70%);
+  pointer-events: none;
+}
+.pv-gate-head {
+  position: relative;
+  text-align: center;
+  margin-bottom: 22px;
+}
+.pv-shield-wrap {
+  width: 58px;
+  height: 58px;
+  margin: 0 auto 12px;
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(145deg, rgba(88, 213, 255, 0.22), rgba(41, 151, 255, 0.08));
+  border: 1px solid rgba(125, 211, 252, 0.45);
+  box-shadow: 0 10px 26px rgba(41, 151, 255, 0.26), inset 0 1px 1px rgba(255, 255, 255, 0.4);
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), background 0.25s ease, border-color 0.25s ease;
+}
+.pv-shield-wrap.verified {
+  background: linear-gradient(145deg, rgba(52, 211, 153, 0.3), rgba(16, 185, 129, 0.14));
+  border-color: rgba(52, 211, 153, 0.72);
+  transform: scale(1.08);
+}
+.pv-shield-svg {
+  width: 26px;
+  height: 26px;
+  color: #7dd3fc;
+}
+.pv-shield-wrap.verified .pv-shield-svg {
+  color: #34d399;
+}
+.pv-gate-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 13px;
+  border-radius: 999px;
+  background: rgba(88, 213, 255, 0.09);
+  border: 1px solid rgba(88, 213, 255, 0.28);
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  color: #7dd3fc;
+  margin-bottom: 9px;
+}
+.pv-gate-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #67e8f9, #2997ff);
+  box-shadow: 0 0 10px #58d5ff;
+}
+.pv-gate-head h2 {
+  font-family: Outfit, Inter, sans-serif;
+  font-size: 27px;
+  font-weight: 800;
+  margin-bottom: 5px;
+  letter-spacing: -0.03em;
+  background: linear-gradient(180deg, #ffffff 25%, #bae6fd 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.pv-gate-head p {
+  font-size: 13.5px;
+  color: #94a3b8;
+  line-height: 1.48;
+}
+.pv-steps-dots {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 11px;
+}
+.pv-step-dot {
+  height: 5px;
+  width: 8px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.16);
+  transition: width 0.28s cubic-bezier(0.16, 1, 0.3, 1), background 0.28s ease;
+}
+.pv-step-dot.active {
+  width: 24px;
+  background: linear-gradient(90deg, #58d5ff, #2997ff);
+}
+.pv-step-panel {
+  animation: pvPanelIn 0.26s cubic-bezier(0.16, 1, 0.3, 1);
+}
+@keyframes pvPanelIn {
+  0% { opacity: 0; transform: translate3d(0, 10px, 0); }
+  100% { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+.pv-gate-group {
+  margin-bottom: 15px;
+}
+.pv-gate-label {
+  display: block;
+  font-size: 11.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #94a3b8;
+  margin-bottom: 8px;
+}
+.pv-input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.pv-input-icon {
+  position: absolute;
+  left: 14px;
+  width: 18px;
+  height: 18px;
+  color: #64748b;
+  pointer-events: none;
+  transition: color 0.18s ease;
+}
+.pv-gate-input {
+  width: 100%;
+  padding: 13.5px 15px 13.5px 42px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.05);
+  color: #f8fafc;
+  font-size: 15px;
+  outline: none;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+}
+.pv-gate-input:focus {
+  border-color: #58d5ff;
+  background: rgba(88, 213, 255, 0.065);
+  box-shadow: 0 0 0 3px rgba(88, 213, 255, 0.16);
+}
+.pv-input-wrap:focus-within .pv-input-icon {
+  color: #58d5ff;
+}
+.pv-target-chip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 14px;
+  background: rgba(88, 213, 255, 0.08);
+  border: 1px solid rgba(88, 213, 255, 0.26);
+  margin-bottom: 16px;
+}
+.pv-target-text {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #e0f2fe;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.pv-edit-pill {
+  flex-shrink: 0;
+  padding: 5px 11px;
+  border-radius: 999px;
+  border: 1px solid rgba(88, 213, 255, 0.36);
+  background: rgba(255, 255, 255, 0.06);
+  color: #7dd3fc;
+  font-size: 11.5px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.pv-otp-boxes {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 8px;
+  margin-bottom: 14px;
+}
+.pv-otp-boxes.pv-shake {
+  animation: pvShake 0.34s cubic-bezier(0.36, 0.07, 0.19, 0.97);
+}
+@keyframes pvShake {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  25%, 75% { transform: translate3d(-5px, 0, 0); }
+  50% { transform: translate3d(5px, 0, 0); }
+}
+.pv-otp-digit {
+  width: 100%;
+  height: 54px;
+  text-align: center;
+  font-family: Outfit, Inter, sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  border-radius: 14px;
+  border: 1.5px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.055);
+  color: #ffffff;
+  outline: none;
+  transition: border-color 0.16s ease, transform 0.16s cubic-bezier(0.16, 1, 0.3, 1), background 0.16s ease;
+}
+.pv-otp-digit:focus {
+  border-color: #58d5ff;
+  background: rgba(88, 213, 255, 0.12);
+  transform: translate3d(0, -2px, 0);
+  box-shadow: 0 0 0 3px rgba(88, 213, 255, 0.18);
+}
+.pv-otp-digit.filled {
+  border-color: rgba(88, 213, 255, 0.68);
+  background: rgba(88, 213, 255, 0.16);
+}
+.pv-gate-btn {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  padding: 14px 18px;
+  border: none;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #67e8f9 0%, #38bdf8 48%, #2997ff 100%);
+  color: #020611;
+  font-size: 15px;
+  font-weight: 800;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 12px 26px rgba(41, 151, 255, 0.36), inset 0 1px 0 rgba(255, 255, 255, 0.55);
+  transition: transform 0.16s cubic-bezier(0.16, 1, 0.3, 1), filter 0.16s ease;
+  touch-action: manipulation;
+}
+.pv-gate-btn:hover:not(:disabled) {
+  transform: translate3d(0, -1px, 0);
+  filter: brightness(1.05);
+}
+.pv-gate-btn:active:not(:disabled) {
+  transform: scale(0.98);
+}
+.pv-gate-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+.pv-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 16px 0;
+  font-size: 11px;
+  font-weight: 700;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+.pv-divider::before, .pv-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.12);
+}
+.pv-google-btn {
+  width: 100%;
+  padding: 13px 16px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.06);
+  color: #f8fafc;
+  font-size: 14.5px;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: background 0.18s ease, border-color 0.18s ease, transform 0.16s ease;
+  touch-action: manipulation;
+}
+.pv-google-btn:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.11);
+  border-color: rgba(88, 213, 255, 0.45);
+}
+.pv-google-btn:active:not(:disabled) {
+  transform: scale(0.98);
+}
+.pv-google-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+.pv-demo-autofill {
+  display: none;
+  width: 100%;
+  margin-bottom: 12px;
+  padding: 9px 12px;
+  border-radius: 12px;
+  border: 1px dashed rgba(88, 213, 255, 0.52);
+  background: rgba(88, 213, 255, 0.08);
+  color: #bae6fd;
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+}
+.pv-demo-autofill.show { display: block; }
+.pv-gate-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 14px;
+  font-size: 12.5px;
+}
+.pv-link-btn {
+  background: none;
+  border: none;
+  color: #58d5ff;
+  font-size: 12.5px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.pv-link-btn:disabled {
+  color: #64748b;
+  cursor: not-allowed;
+}
+.pv-gate-msg {
+  display: none;
+  margin-bottom: 12px;
+  padding: 10px 13px;
+  border-radius: 12px;
+  font-size: 12.5px;
+  line-height: 1.45;
+}
+.pv-gate-msg.show { display: block; }
+.pv-gate-msg.error {
+  background: rgba(251, 113, 133, 0.14);
+  border: 1px solid rgba(251, 113, 133, 0.38);
+  color: #fecdd3;
+}
+.pv-gate-msg.info {
+  background: rgba(88, 213, 255, 0.12);
+  border: 1px solid rgba(88, 213, 255, 0.32);
+  color: #bae6fd;
+}
+.pv-gate-msg.success {
+  background: rgba(52, 211, 153, 0.15);
+  border: 1px solid rgba(52, 211, 153, 0.42);
+  color: #a7f3d0;
+}
+.pv-gate-footer {
+  margin-top: 18px;
+  padding-top: 13px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 11.5px;
+  color: #64748b;
+}
+.pv-mode-badge {
+  padding: 3.5px 10px;
+  border-radius: 999px;
+  background: rgba(88, 213, 255, 0.1);
+  border: 1px solid rgba(88, 213, 255, 0.28);
+  color: #7dd3fc;
+  font-weight: 700;
+}
+.pv-step-hidden { display: none !important; }
+@media (max-width: 440px) {
+  .pv-gate-card { padding: 24px 18px 18px; border-radius: 24px; }
+  .pv-gate-frame { border-radius: 25.5px; }
+  .pv-otp-digit { height: 48px; font-size: 20px; border-radius: 12px; }
+  .pv-otp-boxes { gap: 6px; }
+}
 </style>
 </head>
-<body>
+<body class="pv-locked">
 
 <div class="ambient-liquid" aria-hidden="true">
   <div class="liquid-glow-ring"></div>
@@ -1319,6 +1770,7 @@ footer {
       <span>Studio Live: Accepting Orders</span>
     </button>
     <div class="status-actions">
+      <button type="button" class="status-pill" id="pvSignOutBtn" hidden>🔒 Lock / Sign Out</button>
       <button type="button" class="status-pill" id="statusFastTrackBtn">⚡ 24–48h Delivery</button>
       <a class="status-pill" id="statusWhatsAppBtn" href="https://wa.me/917079050010" target="_blank" rel="noopener noreferrer">💬 WhatsApp: +91 70790 50010</a>
       <a class="status-pill" id="statusCopyEmailBtn" href="mailto:paradoverse69@gmail.com" target="_blank" rel="noopener noreferrer">✉️ paradoverse69@gmail.com</a>
@@ -2328,6 +2780,451 @@ footer {
   }, { passive: true });
   window.addEventListener("load", init);
   init();
+})();
+</script>
+
+<!-- Full-Screen Thick Liquid-Glass Free OTP & Google Lock Gate -->
+<div id="pvGateOverlay" class="pv-gate-overlay" role="dialog" aria-modal="true" aria-labelledby="pvGateTitle">
+  <div class="pv-gate-orb pv-gate-orb-1" aria-hidden="true"></div>
+  <div class="pv-gate-orb pv-gate-orb-2" aria-hidden="true"></div>
+
+  <div class="pv-gate-frame">
+    <div class="pv-gate-card">
+      <div class="pv-gate-head">
+        <div id="pvShieldWrap" class="pv-shield-wrap" aria-hidden="true">
+          <svg id="pvShieldIcon" class="pv-shield-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="11" width="18" height="11" rx="3"></rect>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+          </svg>
+        </div>
+        <div class="pv-gate-pill">
+          <span class="pv-gate-dot"></span>
+          <span>PARADOVERSE</span>
+        </div>
+        <h2 id="pvGateTitle">Verify to Enter</h2>
+        <p id="pvGateSubtitle">Sign in with a free 6-digit Email OTP or your Google account.</p>
+        <div class="pv-steps-dots" aria-hidden="true">
+          <span id="pvDot1" class="pv-step-dot active"></span>
+          <span id="pvDot2" class="pv-step-dot"></span>
+        </div>
+      </div>
+
+      <div id="pvStepRequest" class="pv-step-panel">
+        <div id="pvEmailField" class="pv-gate-group">
+          <label class="pv-gate-label" for="pvEmailInput">Email Address</label>
+          <div class="pv-input-wrap">
+            <input id="pvEmailInput" class="pv-gate-input" type="email" autocomplete="email" placeholder="you@example.com" />
+            <svg class="pv-input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="2" y="4" width="20" height="16" rx="3"></rect>
+              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+            </svg>
+          </div>
+        </div>
+
+        <div id="pvStatusRequest" class="pv-gate-msg"></div>
+
+        <button id="pvSendOtpBtn" class="pv-gate-btn" type="button">Send 6-Digit Email OTP</button>
+
+        <div class="pv-divider">or continue with</div>
+
+        <button id="pvGoogleBtn" class="pv-google-btn" type="button">
+          <svg width="18" height="18" viewBox="0 0 48 48" aria-hidden="true">
+            <path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.7 29.2 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 8 3l5.7-5.7C34 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.2-.1-2.4-.4-3.5z"/>
+            <path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.8 1.2 8 3l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/>
+            <path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35.1 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-7.9l-6.5 5C9.5 39.6 16.2 44 24 44z"/>
+            <path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.2-2.2 4.2-4.1 5.6l6.2 5.2C37 39.2 44 34 44 24c0-1.2-.1-2.4-.4-3.5z"/>
+          </svg>
+          <span>Continue with Google</span>
+        </button>
+      </div>
+
+      <div id="pvStepVerify" class="pv-step-panel pv-step-hidden">
+        <div class="pv-target-chip">
+          <span id="pvTargetDisplay" class="pv-target-text">you@example.com</span>
+          <button id="pvChangeTargetBtn" class="pv-edit-pill" type="button">Edit</button>
+        </div>
+
+        <div class="pv-gate-group">
+          <label class="pv-gate-label" for="pvOtp0">Enter 6-Digit Security Code</label>
+          <div id="pvOtpBoxesWrap" class="pv-otp-boxes">
+            <input id="pvOtp0" class="pv-otp-digit" type="text" inputmode="numeric" maxlength="1" autocomplete="one-time-code" aria-label="OTP digit 1" />
+            <input id="pvOtp1" class="pv-otp-digit" type="text" inputmode="numeric" maxlength="1" aria-label="OTP digit 2" />
+            <input id="pvOtp2" class="pv-otp-digit" type="text" inputmode="numeric" maxlength="1" aria-label="OTP digit 3" />
+            <input id="pvOtp3" class="pv-otp-digit" type="text" inputmode="numeric" maxlength="1" aria-label="OTP digit 4" />
+            <input id="pvOtp4" class="pv-otp-digit" type="text" inputmode="numeric" maxlength="1" aria-label="OTP digit 5" />
+            <input id="pvOtp5" class="pv-otp-digit" type="text" inputmode="numeric" maxlength="1" aria-label="OTP digit 6" />
+          </div>
+        </div>
+
+        <button id="pvDemoFillBtn" class="pv-demo-autofill" type="button">✨ Tap to auto-fill Demo OTP</button>
+
+        <div id="pvStatusVerify" class="pv-gate-msg"></div>
+
+        <button id="pvVerifyOtpBtn" class="pv-gate-btn" type="button">Verify &amp; Unlock Site</button>
+
+        <div class="pv-gate-meta">
+          <span style="color:#64748b;">Didn't get the email?</span>
+          <button id="pvResendOtpBtn" class="pv-link-btn" type="button" disabled>Resend in 60s</button>
+        </div>
+      </div>
+
+      <div class="pv-gate-footer">
+        <span>100% Free Auth • Appwrite</span>
+        <span id="pvModeBadge" class="pv-mode-badge">Preview Demo Mode</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  var APPWRITE_CONFIG = {
+    endpoint: 'https://sgp.cloud.appwrite.io/v1',
+    projectId: '6b000dfb0005f103de3d'
+  };
+
+  var COOKIE_KEY = 'pv_aw_cookie_fallback';
+  var isLive = Boolean(APPWRITE_CONFIG.endpoint && APPWRITE_CONFIG.projectId &&
+    APPWRITE_CONFIG.projectId.indexOf('YOUR_APPWRITE') === -1);
+
+  function getFallbackCookie() {
+    try { return localStorage.getItem(COOKIE_KEY) || ''; } catch (_) { return ''; }
+  }
+  function saveFallbackCookie(val) {
+    if (!val) return;
+    try { localStorage.setItem(COOKIE_KEY, val); } catch (_) {}
+  }
+  function clearFallbackCookie() {
+    try { localStorage.removeItem(COOKIE_KEY); } catch (_) {}
+  }
+
+  async function appwriteFetch(path, method, bodyObj) {
+    var headers = {
+      'Content-Type': 'application/json',
+      'X-Appwrite-Project': APPWRITE_CONFIG.projectId
+    };
+    var fallback = getFallbackCookie();
+    if (fallback) {
+      headers['X-Fallback-Cookies'] = fallback;
+    }
+
+    var res;
+    try {
+      res = await fetch(APPWRITE_CONFIG.endpoint + path, {
+        method: method || 'GET',
+        headers: headers,
+        body: bodyObj ? JSON.stringify(bodyObj) : undefined
+      });
+    } catch (netErr) {
+      var host = window.location.hostname || 'this origin';
+      throw new Error(
+        'Cannot reach Appwrite from "' + host + '". Make sure "' + host +
+        '" is added under Overview -> Apps -> Web in your Appwrite Console.'
+      );
+    }
+
+    var newCookie = res.headers.get('X-Fallback-Cookies');
+    if (newCookie) saveFallbackCookie(newCookie);
+
+    var data = null;
+    try { data = await res.json(); } catch (_) {}
+
+    if (!res.ok) {
+      var msg = (data && data.message) ? data.message : ('Request failed (' + res.status + ')');
+      var err = new Error(msg);
+      err.code = res.status;
+      err.type = data && data.type;
+      throw err;
+    }
+    return data;
+  }
+
+  var gateState = {
+    target: '',
+    userId: '',
+    seconds: 0,
+    timer: null,
+    busy: false
+  };
+
+  var overlay = document.getElementById('pvGateOverlay');
+  var shieldWrap = document.getElementById('pvShieldWrap');
+  var shieldIcon = document.getElementById('pvShieldIcon');
+  var gateTitle = document.getElementById('pvGateTitle');
+  var subtitle = document.getElementById('pvGateSubtitle');
+  var dot1 = document.getElementById('pvDot1');
+  var dot2 = document.getElementById('pvDot2');
+  var stepReq = document.getElementById('pvStepRequest');
+  var stepVer = document.getElementById('pvStepVerify');
+  var emailInput = document.getElementById('pvEmailInput');
+  var sendBtn = document.getElementById('pvSendOtpBtn');
+  var googleBtn = document.getElementById('pvGoogleBtn');
+  var verifyBtn = document.getElementById('pvVerifyOtpBtn');
+  var changeBtn = document.getElementById('pvChangeTargetBtn');
+  var resendBtn = document.getElementById('pvResendOtpBtn');
+  var demoFillBtn = document.getElementById('pvDemoFillBtn');
+  var targetDisplay = document.getElementById('pvTargetDisplay');
+  var otpBoxesWrap = document.getElementById('pvOtpBoxesWrap');
+  var signOutBtn = document.getElementById('pvSignOutBtn');
+  var statusReq = document.getElementById('pvStatusRequest');
+  var statusVer = document.getElementById('pvStatusVerify');
+  var modeBadge = document.getElementById('pvModeBadge');
+  var otpBoxes = Array.prototype.slice.call(document.querySelectorAll('.pv-otp-digit'));
+
+  if (modeBadge) modeBadge.textContent = isLive ? 'Live Appwrite Auth' : 'Setup Required';
+  if (demoFillBtn) demoFillBtn.classList.remove('show');
+
+  function setStepDots(step) {
+    if (dot1) dot1.classList.toggle('active', step === 1);
+    if (dot2) dot2.classList.toggle('active', step === 2);
+  }
+
+  function setShieldState(verified) {
+    if (!shieldWrap || !shieldIcon) return;
+    shieldWrap.classList.toggle('verified', verified);
+    shieldIcon.innerHTML = verified
+      ? '<polyline points="20 6 9 17 4 12"></polyline>'
+      : '<rect x="3" y="11" width="18" height="11" rx="3"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path>';
+  }
+
+  function showMsg(el, text, type) {
+    el.textContent = text;
+    el.className = 'pv-gate-msg show ' + type;
+  }
+
+  function clearMsg(el) {
+    el.textContent = '';
+    el.className = 'pv-gate-msg';
+  }
+
+  function triggerShake() {
+    if (!otpBoxesWrap) return;
+    otpBoxesWrap.classList.remove('pv-shake');
+    void otpBoxesWrap.offsetWidth;
+    otpBoxesWrap.classList.add('pv-shake');
+  }
+
+  function unlockSite(identity, immediate) {
+    setShieldState(true);
+    if (signOutBtn) {
+      signOutBtn.hidden = false;
+      signOutBtn.textContent = '🔒 ' + identity + ' • Sign Out';
+    }
+    if (immediate) {
+      document.body.classList.remove('pv-locked');
+      overlay.classList.add('pv-hidden');
+      return;
+    }
+    var activeMsg = stepVer.classList.contains('pv-step-hidden') ? statusReq : statusVer;
+    showMsg(activeMsg, 'Verified! Unlocking Paradoverse...', 'success');
+    setTimeout(function () {
+      document.body.classList.remove('pv-locked');
+      overlay.classList.add('pv-hidden');
+    }, 340);
+  }
+
+  function lockSite() {
+    setShieldState(false);
+    setStepDots(1);
+    document.body.classList.add('pv-locked');
+    overlay.classList.remove('pv-hidden');
+    stepVer.classList.add('pv-step-hidden');
+    stepReq.classList.remove('pv-step-hidden');
+    gateTitle.textContent = 'Verify to Enter';
+    subtitle.textContent = 'Sign in with a free 6-digit Email OTP or your Google account.';
+    otpBoxes.forEach(function (inp) { inp.value = ''; inp.classList.remove('filled'); });
+    clearMsg(statusReq);
+    clearMsg(statusVer);
+    if (signOutBtn) signOutBtn.hidden = true;
+    clearFallbackCookie();
+  }
+
+  function startTimer() {
+    if (gateState.timer) clearInterval(gateState.timer);
+    gateState.seconds = 60;
+    resendBtn.disabled = true;
+    resendBtn.textContent = 'Resend in 60s';
+    gateState.timer = setInterval(function () {
+      gateState.seconds -= 1;
+      if (gateState.seconds <= 0) {
+        clearInterval(gateState.timer);
+        gateState.timer = null;
+        resendBtn.disabled = false;
+        resendBtn.textContent = 'Resend OTP';
+      } else {
+        resendBtn.textContent = 'Resend in ' + gateState.seconds + 's';
+      }
+    }, 1000);
+  }
+
+  async function sendOtp() {
+    if (gateState.busy) return;
+    clearMsg(statusReq);
+    clearMsg(statusVer);
+    var email = emailInput.value.trim();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      showMsg(statusReq, 'Enter a valid email address.', 'error');
+      return;
+    }
+
+    gateState.target = email;
+    gateState.busy = true;
+    sendBtn.disabled = true;
+    sendBtn.textContent = 'Sending Code...';
+
+    try {
+      var tokenRes = await appwriteFetch('/account/tokens/email', 'POST', {
+        userId: 'unique()',
+        email: email
+      });
+      gateState.userId = tokenRes && tokenRes.userId ? tokenRes.userId : '';
+      if (!gateState.userId) {
+        throw new Error('Email token did not return a user ID. Check Appwrite Auth settings.');
+      }
+
+      stepReq.classList.add('pv-step-hidden');
+      stepVer.classList.remove('pv-step-hidden');
+      setStepDots(2);
+      gateTitle.textContent = 'Enter OTP Code';
+      subtitle.textContent = 'We sent a 6-digit verification code to:';
+      targetDisplay.textContent = email;
+      showMsg(statusVer, '6-digit code sent! Check your Inbox (and Spam folder).', 'info');
+      otpBoxes.forEach(function (inp) { inp.value = ''; inp.classList.remove('filled'); });
+      otpBoxes[0].focus();
+      startTimer();
+    } catch (err) {
+      showMsg(statusReq, (err && err.message) ? err.message : 'Failed to send Email OTP.', 'error');
+    } finally {
+      gateState.busy = false;
+      sendBtn.disabled = false;
+      sendBtn.textContent = 'Send 6-Digit Email OTP';
+    }
+  }
+
+  function signInGoogle() {
+    if (gateState.busy) return;
+    clearMsg(statusReq);
+    var redirectUrl = window.location.origin + window.location.pathname;
+    var oauthUrl = APPWRITE_CONFIG.endpoint +
+      '/account/sessions/oauth2/google?project=' + encodeURIComponent(APPWRITE_CONFIG.projectId) +
+      '&success=' + encodeURIComponent(redirectUrl) +
+      '&failure=' + encodeURIComponent(redirectUrl);
+    window.location.href = oauthUrl;
+  }
+
+  async function verifyOtp() {
+    if (gateState.busy) return;
+    clearMsg(statusVer);
+    var token = otpBoxes.map(function (inp) { return inp.value.trim(); }).join('');
+    if (!/^\d{6}$/.test(token)) {
+      triggerShake();
+      showMsg(statusVer, 'Please enter all 6 digits.', 'error');
+      return;
+    }
+
+    gateState.busy = true;
+    verifyBtn.disabled = true;
+    verifyBtn.textContent = 'Verifying...';
+
+    try {
+      try {
+        await appwriteFetch('/account/sessions/token', 'POST', {
+          userId: gateState.userId,
+          secret: token
+        });
+      } catch (sessionErr) {
+        if (sessionErr && sessionErr.type === 'user_session_already_exists') {
+          await appwriteFetch('/account/sessions/current', 'DELETE');
+          await appwriteFetch('/account/sessions/token', 'POST', {
+            userId: gateState.userId,
+            secret: token
+          });
+        } else {
+          throw sessionErr;
+        }
+      }
+
+      var user = await appwriteFetch('/account', 'GET');
+      unlockSite((user && user.email) || gateState.target, false);
+    } catch (err) {
+      triggerShake();
+      showMsg(statusVer, (err && err.message) ? err.message : 'Invalid or expired OTP.', 'error');
+    } finally {
+      gateState.busy = false;
+      verifyBtn.disabled = false;
+      verifyBtn.textContent = 'Verify & Unlock Site';
+    }
+  }
+
+  sendBtn.addEventListener('click', sendOtp);
+  googleBtn.addEventListener('click', signInGoogle);
+  verifyBtn.addEventListener('click', verifyOtp);
+  resendBtn.addEventListener('click', sendOtp);
+
+  changeBtn.addEventListener('click', function () {
+    if (gateState.timer) clearInterval(gateState.timer);
+    stepVer.classList.add('pv-step-hidden');
+    stepReq.classList.remove('pv-step-hidden');
+    setStepDots(1);
+    gateTitle.textContent = 'Verify to Enter';
+    subtitle.textContent = 'Sign in with a free 6-digit Email OTP or your Google account.';
+    clearMsg(statusVer);
+  });
+
+  if (signOutBtn) {
+    signOutBtn.addEventListener('click', async function () {
+      try { await appwriteFetch('/account/sessions/current', 'DELETE'); } catch (_) {}
+      lockSite();
+    });
+  }
+
+  emailInput.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') sendOtp();
+  });
+
+  otpBoxes.forEach(function (inp, idx) {
+    inp.addEventListener('input', function (e) {
+      var clean = e.target.value.replace(/\D/g, '');
+      e.target.value = clean.slice(0, 1);
+      e.target.classList.toggle('filled', Boolean(e.target.value));
+      if (clean && idx < otpBoxes.length - 1) {
+        otpBoxes[idx + 1].focus();
+      } else if (clean && idx === otpBoxes.length - 1) {
+        var allFilled = otpBoxes.every(function (b) { return /^\d$/.test(b.value); });
+        if (allFilled) setTimeout(verifyOtp, 120);
+      }
+    });
+    inp.addEventListener('keydown', function (e) {
+      if (e.key === 'Backspace' && !inp.value && idx > 0) {
+        otpBoxes[idx - 1].focus();
+      } else if (e.key === 'Enter') {
+        verifyOtp();
+      }
+    });
+    inp.addEventListener('paste', function (e) {
+      var pasted = (e.clipboardData || window.clipboardData).getData('text').replace(/\D/g, '');
+      if (!pasted) return;
+      e.preventDefault();
+      pasted.slice(0, 6).split('').forEach(function (ch, i) {
+        if (otpBoxes[i]) {
+          otpBoxes[i].value = ch;
+          otpBoxes[i].classList.add('filled');
+        }
+      });
+      otpBoxes[Math.min(pasted.length, 5)].focus();
+      if (pasted.length >= 6) setTimeout(verifyOtp, 120);
+    });
+  });
+
+  (async function restore() {
+    if (!isLive) return;
+    try {
+      var user = await appwriteFetch('/account', 'GET');
+      if (user && (user.email || user.name)) {
+        unlockSite(user.email || user.name, true);
+      }
+    } catch (_) {}
+  })();
 })();
 </script>
 </body>
