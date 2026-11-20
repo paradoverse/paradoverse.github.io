@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<link rel="icon" type="image/png" href="favicon.png?v=2">
-<link rel="apple-touch-icon" href="favicon.png?v=2">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>PARADOVERSE | Beyond Creativity — Video Editing, VFX &amp; Media Promotion Agency</title>
@@ -1286,7 +1284,6 @@ body > *:not(#pvGateOverlay):not(#toastBanner) {
   transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 body.pv-locked > *:not(#pvGateOverlay):not(#toastBanner) {
-  opacity: 0.14;
   pointer-events: none;
   user-select: none;
 }
@@ -1468,6 +1465,158 @@ body.pv-locked > *:not(#pvGateOverlay):not(#toastBanner) {
 @keyframes pvPanelIn {
   0% { opacity: 0; transform: translate3d(0, 10px, 0); }
   100% { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+.pv-top-auth-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(88, 213, 255, 0.55);
+  background: linear-gradient(135deg, rgba(88, 213, 255, 0.24), rgba(41, 151, 255, 0.28));
+  color: #ffffff;
+  font-size: 12.5px;
+  font-weight: 700;
+  white-space: nowrap;
+  cursor: pointer;
+  touch-action: manipulation;
+  box-shadow: 0 4px 14px rgba(41, 151, 255, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  transition: transform 0.16s cubic-bezier(0.16, 1, 0.3, 1), filter 0.16s ease;
+}
+.pv-top-auth-btn:hover {
+  filter: brightness(1.1);
+  transform: translate3d(0, -1px, 0);
+}
+.pv-top-auth-btn:active {
+  transform: scale(0.96);
+}
+.pv-top-auth-btn.signed-in {
+  border-color: rgba(52, 211, 153, 0.55);
+  background: rgba(52, 211, 153, 0.16);
+  color: #a7f3d0;
+}
+.pv-close-x {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 3;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.06);
+  color: #cbd5e1;
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.16s ease, color 0.16s ease, transform 0.16s ease;
+  touch-action: manipulation;
+}
+.pv-close-x:hover {
+  background: rgba(255, 255, 255, 0.14);
+  color: #ffffff;
+}
+.pv-skip-btn {
+  width: 100%;
+  margin-top: 12px;
+  padding: 13px 16px;
+  border-radius: 14px;
+  border: 1.5px solid rgba(88, 213, 255, 0.45);
+  background: linear-gradient(135deg, rgba(88, 213, 255, 0.14), rgba(41, 151, 255, 0.1));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 6px 18px rgba(41, 151, 255, 0.16);
+  color: #e0f2fe;
+  font-size: 14.5px;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: background 0.18s ease, border-color 0.18s ease, transform 0.16s cubic-bezier(0.16, 1, 0.3, 1);
+  touch-action: manipulation;
+}
+.pv-skip-btn:hover {
+  background: linear-gradient(135deg, rgba(88, 213, 255, 0.24), rgba(41, 151, 255, 0.2));
+  border-color: #58d5ff;
+  color: #ffffff;
+  transform: translate3d(0, -1px, 0);
+}
+.pv-skip-btn:active {
+  transform: scale(0.98);
+}
+.pv-gate-tabs {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 5px;
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.045);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: 18px;
+}
+.pv-tab-slider {
+  position: absolute;
+  top: 5px;
+  bottom: 5px;
+  left: 5px;
+  width: calc(50% - 5px);
+  border-radius: 10px;
+  background: linear-gradient(135deg, rgba(88, 213, 255, 0.25), rgba(41, 151, 255, 0.34));
+  border: 1px solid rgba(125, 211, 252, 0.44);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.28), 0 4px 14px rgba(41, 151, 255, 0.24);
+  transition: transform 0.26s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+  will-change: transform;
+}
+.pv-gate-tabs.is-email .pv-tab-slider {
+  transform: translate3d(100%, 0, 0);
+}
+.pv-gate-tab {
+  position: relative;
+  z-index: 1;
+  padding: 9.5px 10px;
+  border: none;
+  border-radius: 10px;
+  background: transparent;
+  color: #94a3b8;
+  font-size: 13.5px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: color 0.18s ease;
+  touch-action: manipulation;
+}
+.pv-gate-tab.active {
+  color: #ffffff;
+}
+.pv-phone-row {
+  display: flex;
+  gap: 8px;
+}
+.pv-cc-select {
+  width: 104px;
+  flex-shrink: 0;
+  padding: 13px 10px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.05);
+  color: #f8fafc;
+  font-size: 14px;
+  font-weight: 700;
+  outline: none;
+}
+.pv-cc-select option {
+  background: #0a0e17;
+  color: #f8fafc;
+}
+.pv-cc-select:focus {
+  border-color: #58d5ff;
+  box-shadow: 0 0 0 3px rgba(88, 213, 255, 0.16);
+}
+.pv-gate-input.pv-no-icon {
+  padding-left: 15px;
 }
 .pv-gate-group {
   margin-bottom: 15px;
@@ -1744,7 +1893,7 @@ body.pv-locked > *:not(#pvGateOverlay):not(#toastBanner) {
 }
 </style>
 </head>
-<body class="pv-locked">
+<body>
 
 <div class="ambient-liquid" aria-hidden="true">
   <div class="liquid-glow-ring"></div>
@@ -1760,7 +1909,10 @@ body.pv-locked > *:not(#pvGateOverlay):not(#toastBanner) {
         <div class="notch-brand-sub">Beyond Creativity • Digital Media Agency</div>
       </div>
     </button>
-    <button type="button" class="status-pill" id="notchQuickOrderBtn">✨ Start Order</button>
+    <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:flex-end;">
+      <button type="button" class="pv-top-auth-btn" id="pvTopAuthBtn">Login / Sign Up</button>
+      <button type="button" class="status-pill" id="notchQuickOrderBtn">✨ Start Order</button>
+    </div>
   </div>
 </div>
 
@@ -2785,13 +2937,14 @@ body.pv-locked > *:not(#pvGateOverlay):not(#toastBanner) {
 })();
 </script>
 
-<!-- Full-Screen Thick Liquid-Glass Free OTP & Google Lock Gate -->
-<div id="pvGateOverlay" class="pv-gate-overlay" role="dialog" aria-modal="true" aria-labelledby="pvGateTitle">
+<!-- Full-Screen 60fps Liquid-Glass Email OTP Modal (Optional with Highlighted Skip) -->
+<div id="pvGateOverlay" class="pv-gate-overlay pv-hidden" role="dialog" aria-modal="true" aria-labelledby="pvGateTitle">
   <div class="pv-gate-orb pv-gate-orb-1" aria-hidden="true"></div>
   <div class="pv-gate-orb pv-gate-orb-2" aria-hidden="true"></div>
 
   <div class="pv-gate-frame">
     <div class="pv-gate-card">
+      <button id="pvCloseModalBtn" class="pv-close-x" type="button" aria-label="Skip and close">✕</button>
       <div class="pv-gate-head">
         <div id="pvShieldWrap" class="pv-shield-wrap" aria-hidden="true">
           <svg id="pvShieldIcon" class="pv-shield-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -2803,8 +2956,8 @@ body.pv-locked > *:not(#pvGateOverlay):not(#toastBanner) {
           <span class="pv-gate-dot"></span>
           <span>PARADOVERSE</span>
         </div>
-        <h2 id="pvGateTitle">Verify to Enter</h2>
-        <p id="pvGateSubtitle">Sign in with a free 6-digit Email OTP or your Google account.</p>
+        <h2 id="pvGateTitle">Welcome to Paradoverse</h2>
+        <p id="pvGateSubtitle">Sign in quickly with a free 6-digit Email OTP, or skip straight to the website.</p>
         <div class="pv-steps-dots" aria-hidden="true">
           <span id="pvDot1" class="pv-step-dot active"></span>
           <span id="pvDot2" class="pv-step-dot"></span>
@@ -2827,17 +2980,7 @@ body.pv-locked > *:not(#pvGateOverlay):not(#toastBanner) {
 
         <button id="pvSendOtpBtn" class="pv-gate-btn" type="button">Send 6-Digit Email OTP</button>
 
-        <div class="pv-divider">or continue with</div>
-
-        <button id="pvGoogleBtn" class="pv-google-btn" type="button">
-          <svg width="18" height="18" viewBox="0 0 48 48" aria-hidden="true">
-            <path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.7 29.2 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 8 3l5.7-5.7C34 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.2-.1-2.4-.4-3.5z"/>
-            <path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.8 1.2 8 3l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/>
-            <path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35.1 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-7.9l-6.5 5C9.5 39.6 16.2 44 24 44z"/>
-            <path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.2-2.2 4.2-4.1 5.6l6.2 5.2C37 39.2 44 34 44 24c0-1.2-.1-2.4-.4-3.5z"/>
-          </svg>
-          <span>Continue with Google</span>
-        </button>
+        <button id="pvSkipBtn" class="pv-skip-btn" type="button">Skip &amp; Browse Website →</button>
       </div>
 
       <div id="pvStepVerify" class="pv-step-panel pv-step-hidden">
@@ -2858,11 +3001,11 @@ body.pv-locked > *:not(#pvGateOverlay):not(#toastBanner) {
           </div>
         </div>
 
-        <button id="pvDemoFillBtn" class="pv-demo-autofill" type="button">✨ Tap to auto-fill Demo OTP</button>
-
         <div id="pvStatusVerify" class="pv-gate-msg"></div>
 
-        <button id="pvVerifyOtpBtn" class="pv-gate-btn" type="button">Verify &amp; Unlock Site</button>
+        <button id="pvVerifyOtpBtn" class="pv-gate-btn" type="button">Verify &amp; Continue</button>
+
+        <button id="pvSkipVerifyBtn" class="pv-skip-btn" type="button">Skip &amp; Browse Website →</button>
 
         <div class="pv-gate-meta">
           <span style="color:#64748b;">Didn't get the email?</span>
@@ -2871,8 +3014,8 @@ body.pv-locked > *:not(#pvGateOverlay):not(#toastBanner) {
       </div>
 
       <div class="pv-gate-footer">
-        <span>100% Free Auth • Appwrite</span>
-        <span id="pvModeBadge" class="pv-mode-badge">Preview Demo Mode</span>
+        <span>Secured by Appwrite Auth</span>
+        <span id="pvModeBadge" class="pv-mode-badge">Live Email OTP</span>
       </div>
     </div>
   </div>
@@ -2886,8 +3029,10 @@ body.pv-locked > *:not(#pvGateOverlay):not(#toastBanner) {
   };
 
   var COOKIE_KEY = 'pv_aw_cookie_fallback';
+  var SKIP_KEY = 'pv_auth_skipped';
   var isLive = Boolean(APPWRITE_CONFIG.endpoint && APPWRITE_CONFIG.projectId &&
     APPWRITE_CONFIG.projectId.indexOf('YOUR_APPWRITE') === -1);
+  var isSignedIn = false;
 
   function getFallbackCookie() {
     try { return localStorage.getItem(COOKIE_KEY) || ''; } catch (_) { return ''; }
@@ -2906,9 +3051,7 @@ body.pv-locked > *:not(#pvGateOverlay):not(#toastBanner) {
       'X-Appwrite-Project': APPWRITE_CONFIG.projectId
     };
     var fallback = getFallbackCookie();
-    if (fallback) {
-      headers['X-Fallback-Cookies'] = fallback;
-    }
+    if (fallback) headers['X-Fallback-Cookies'] = fallback;
 
     var res;
     try {
@@ -2920,8 +3063,7 @@ body.pv-locked > *:not(#pvGateOverlay):not(#toastBanner) {
     } catch (netErr) {
       var host = window.location.hostname || 'this origin';
       throw new Error(
-        'Cannot reach Appwrite from "' + host + '". Make sure "' + host +
-        '" is added under Overview -> Apps -> Web in your Appwrite Console.'
+        'Cannot reach Appwrite from "' + host + '". Open your live GitHub site (paradoverse.github.io) and make sure it is added under Overview -> Apps -> Web in Appwrite.'
       );
     }
 
@@ -2956,25 +3098,26 @@ body.pv-locked > *:not(#pvGateOverlay):not(#toastBanner) {
   var subtitle = document.getElementById('pvGateSubtitle');
   var dot1 = document.getElementById('pvDot1');
   var dot2 = document.getElementById('pvDot2');
+  var emailInput = document.getElementById('pvEmailInput');
   var stepReq = document.getElementById('pvStepRequest');
   var stepVer = document.getElementById('pvStepVerify');
-  var emailInput = document.getElementById('pvEmailInput');
   var sendBtn = document.getElementById('pvSendOtpBtn');
-  var googleBtn = document.getElementById('pvGoogleBtn');
   var verifyBtn = document.getElementById('pvVerifyOtpBtn');
   var changeBtn = document.getElementById('pvChangeTargetBtn');
   var resendBtn = document.getElementById('pvResendOtpBtn');
-  var demoFillBtn = document.getElementById('pvDemoFillBtn');
   var targetDisplay = document.getElementById('pvTargetDisplay');
   var otpBoxesWrap = document.getElementById('pvOtpBoxesWrap');
   var signOutBtn = document.getElementById('pvSignOutBtn');
+  var topAuthBtn = document.getElementById('pvTopAuthBtn');
+  var closeModalBtn = document.getElementById('pvCloseModalBtn');
+  var skipBtn = document.getElementById('pvSkipBtn');
+  var skipVerifyBtn = document.getElementById('pvSkipVerifyBtn');
   var statusReq = document.getElementById('pvStatusRequest');
   var statusVer = document.getElementById('pvStatusVerify');
   var modeBadge = document.getElementById('pvModeBadge');
   var otpBoxes = Array.prototype.slice.call(document.querySelectorAll('.pv-otp-digit'));
 
-  if (modeBadge) modeBadge.textContent = isLive ? 'Live Appwrite Auth' : 'Setup Required';
-  if (demoFillBtn) demoFillBtn.classList.remove('show');
+  if (modeBadge) modeBadge.textContent = isLive ? 'Live Email OTP' : 'Setup Required';
 
   function setStepDots(step) {
     if (dot1) dot1.classList.toggle('active', step === 1);
@@ -3006,39 +3149,57 @@ body.pv-locked > *:not(#pvGateOverlay):not(#toastBanner) {
     otpBoxesWrap.classList.add('pv-shake');
   }
 
+  function openAuthModal() {
+    setShieldState(false);
+    setStepDots(1);
+    stepVer.classList.add('pv-step-hidden');
+    stepReq.classList.remove('pv-step-hidden');
+    gateTitle.textContent = 'Welcome to Paradoverse';
+    subtitle.textContent = 'Sign in quickly with a free 6-digit Email OTP, or skip straight to the website.';
+    clearMsg(statusReq);
+    clearMsg(statusVer);
+    document.body.classList.add('pv-locked');
+    overlay.classList.remove('pv-hidden');
+  }
+
+  function closeAuthModal(markSkipped) {
+    document.body.classList.remove('pv-locked');
+    overlay.classList.add('pv-hidden');
+    if (markSkipped) {
+      try { sessionStorage.setItem(SKIP_KEY, '1'); } catch (_) {}
+    }
+  }
+
   function unlockSite(identity, immediate) {
+    isSignedIn = true;
     setShieldState(true);
+    if (topAuthBtn) {
+      topAuthBtn.classList.add('signed-in');
+      topAuthBtn.textContent = '✓ ' + identity;
+    }
     if (signOutBtn) {
       signOutBtn.hidden = false;
-      signOutBtn.textContent = '🔒 ' + identity + ' • Sign Out';
+      signOutBtn.textContent = '🔒 Sign Out';
     }
     if (immediate) {
-      document.body.classList.remove('pv-locked');
-      overlay.classList.add('pv-hidden');
+      closeAuthModal(false);
       return;
     }
-    var activeMsg = stepVer.classList.contains('pv-step-hidden') ? statusReq : statusVer;
-    showMsg(activeMsg, 'Verified! Unlocking Paradoverse...', 'success');
-    setTimeout(function () {
-      document.body.classList.remove('pv-locked');
-      overlay.classList.add('pv-hidden');
-    }, 340);
+    showMsg(statusVer, 'Signed in! Welcome to Paradoverse.', 'success');
+    setTimeout(function () { closeAuthModal(false); }, 320);
   }
 
   function lockSite() {
+    isSignedIn = false;
     setShieldState(false);
-    setStepDots(1);
-    document.body.classList.add('pv-locked');
-    overlay.classList.remove('pv-hidden');
-    stepVer.classList.add('pv-step-hidden');
-    stepReq.classList.remove('pv-step-hidden');
-    gateTitle.textContent = 'Verify to Enter';
-    subtitle.textContent = 'Sign in with a free 6-digit Email OTP or your Google account.';
-    otpBoxes.forEach(function (inp) { inp.value = ''; inp.classList.remove('filled'); });
-    clearMsg(statusReq);
-    clearMsg(statusVer);
+    if (topAuthBtn) {
+      topAuthBtn.classList.remove('signed-in');
+      topAuthBtn.textContent = 'Login / Sign Up';
+    }
     if (signOutBtn) signOutBtn.hidden = true;
+    otpBoxes.forEach(function (inp) { inp.value = ''; inp.classList.remove('filled'); });
     clearFallbackCookie();
+    closeAuthModal(false);
   }
 
   function startTimer() {
@@ -3081,7 +3242,7 @@ body.pv-locked > *:not(#pvGateOverlay):not(#toastBanner) {
       });
       gateState.userId = tokenRes && tokenRes.userId ? tokenRes.userId : '';
       if (!gateState.userId) {
-        throw new Error('Email token did not return a user ID. Check Appwrite Auth settings.');
+        throw new Error('OTP request did not return a user ID. Check Appwrite Auth settings.');
       }
 
       stepReq.classList.add('pv-step-hidden');
@@ -3101,17 +3262,6 @@ body.pv-locked > *:not(#pvGateOverlay):not(#toastBanner) {
       sendBtn.disabled = false;
       sendBtn.textContent = 'Send 6-Digit Email OTP';
     }
-  }
-
-  function signInGoogle() {
-    if (gateState.busy) return;
-    clearMsg(statusReq);
-    var redirectUrl = window.location.origin + window.location.pathname;
-    var oauthUrl = APPWRITE_CONFIG.endpoint +
-      '/account/sessions/oauth2/google?project=' + encodeURIComponent(APPWRITE_CONFIG.projectId) +
-      '&success=' + encodeURIComponent(redirectUrl) +
-      '&failure=' + encodeURIComponent(redirectUrl);
-    window.location.href = oauthUrl;
   }
 
   async function verifyOtp() {
@@ -3154,12 +3304,11 @@ body.pv-locked > *:not(#pvGateOverlay):not(#toastBanner) {
     } finally {
       gateState.busy = false;
       verifyBtn.disabled = false;
-      verifyBtn.textContent = 'Verify & Unlock Site';
+      verifyBtn.textContent = 'Verify & Continue';
     }
   }
 
   sendBtn.addEventListener('click', sendOtp);
-  googleBtn.addEventListener('click', signInGoogle);
   verifyBtn.addEventListener('click', verifyOtp);
   resendBtn.addEventListener('click', sendOtp);
 
@@ -3168,8 +3317,8 @@ body.pv-locked > *:not(#pvGateOverlay):not(#toastBanner) {
     stepVer.classList.add('pv-step-hidden');
     stepReq.classList.remove('pv-step-hidden');
     setStepDots(1);
-    gateTitle.textContent = 'Verify to Enter';
-    subtitle.textContent = 'Sign in with a free 6-digit Email OTP or your Google account.';
+    gateTitle.textContent = 'Welcome to Paradoverse';
+    subtitle.textContent = 'Sign in quickly with a free 6-digit Email OTP, or skip straight to the website.';
     clearMsg(statusVer);
   });
 
@@ -3179,6 +3328,28 @@ body.pv-locked > *:not(#pvGateOverlay):not(#toastBanner) {
       lockSite();
     });
   }
+
+  if (topAuthBtn) {
+    topAuthBtn.addEventListener('click', function () {
+      if (isSignedIn) {
+        if (signOutBtn) signOutBtn.click();
+      } else {
+        openAuthModal();
+      }
+    });
+  }
+  if (closeModalBtn) closeModalBtn.addEventListener('click', function () { closeAuthModal(true); });
+  if (skipBtn) skipBtn.addEventListener('click', function () { closeAuthModal(true); });
+  if (skipVerifyBtn) skipVerifyBtn.addEventListener('click', function () { closeAuthModal(true); });
+
+  overlay.addEventListener('click', function (e) {
+    if (e.target === overlay) closeAuthModal(true);
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && !overlay.classList.contains('pv-hidden')) {
+      closeAuthModal(true);
+    }
+  });
 
   emailInput.addEventListener('keydown', function (e) {
     if (e.key === 'Enter') sendOtp();
@@ -3219,13 +3390,20 @@ body.pv-locked > *:not(#pvGateOverlay):not(#toastBanner) {
   });
 
   (async function restore() {
-    if (!isLive) return;
-    try {
-      var user = await appwriteFetch('/account', 'GET');
-      if (user && (user.email || user.name)) {
-        unlockSite(user.email || user.name, true);
-      }
-    } catch (_) {}
+    var skipped = false;
+    try { skipped = sessionStorage.getItem(SKIP_KEY) === '1'; } catch (_) {}
+    if (isLive) {
+      try {
+        var user = await appwriteFetch('/account', 'GET');
+        if (user && (user.email || user.name)) {
+          unlockSite(user.email || user.name, true);
+          return;
+        }
+      } catch (_) {}
+    }
+    if (!skipped) {
+      setTimeout(openAuthModal, 420);
+    }
   })();
 })();
 </script>
