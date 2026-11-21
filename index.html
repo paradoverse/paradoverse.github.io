@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="icon" type="image/png" href="/favicon.png">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Parado Verse— Editing and Promotion Agency| Beyond Creativity — Video Editing, VFX &amp; Media Promotion Agency</title>
+<title>PARADOVERSE | Beyond Creativity — Video Editing, VFX &amp; Media Promotion Agency</title>
 <meta name="description" content="Paradoverse is a digital media agency for video editing, Reels, Shorts, VFX, motion graphics, paid song and movie promotion, and brand campaigns.">
 <meta name="keywords" content="Paradoverse, Paradoverse media, video editing agency, Reels editing, Shorts editing, cinematic video editing, VFX, motion graphics, song promotion, movie promotion, digital media agency">
 <meta name="author" content="Paradoverse">
@@ -2735,9 +2734,556 @@ section > h2 {
   html { scroll-behavior: auto; }
 }
 
+
+/* === MOBILE VIEWPORT & HEADER OVERFLOW FIX === */
+html, body {
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+header#topHeader,
+.status-bar,
+main.wrap,
+footer {
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+.pv-top-auth-btn {
+  max-width: 210px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+@media (max-width: 760px) {
+  .bar {
+    flex-wrap: wrap;
+    row-gap: 8px;
+    padding: 8px 0;
+  }
+  .pv-header-left-group {
+    width: 100%;
+    justify-content: flex-start;
+  }
+  .header-actions {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    flex-shrink: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 6px;
+  }
+  .pv-top-auth-btn {
+    flex: 1 1 auto;
+    min-width: 0;
+    max-width: 100%;
+    padding: 6px 10px;
+    font-size: 11.8px;
+    text-align: left;
+  }
+  .cart-trigger-btn {
+    flex-shrink: 0;
+    min-height: 34px;
+    padding: 5px 10px;
+    font-size: 11.8px;
+    gap: 5px;
+  }
+  .mode-toggle {
+    flex-shrink: 0;
+    min-height: 34px;
+    padding: 5px 9px;
+    font-size: 11.5px;
+  }
+  .hero-top-showcase {
+    width: 100%;
+    max-width: 100%;
+    margin-left: 0;
+    transform: none;
+    border-radius: 22px;
+  }
+  .status-inner {
+    padding: 6px 0;
+  }
+}
+
+
+/* === 60FPS TACTILE CLICKING & STUDIO MOTION SYSTEM === */
+.pv-scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2.5px;
+  z-index: 280;
+  background: linear-gradient(90deg, #2997ff, #58d5ff, #34d399);
+  transform-origin: left center;
+  transform: scaleX(0);
+  pointer-events: none;
+  box-shadow: 0 0 12px rgba(88, 213, 255, 0.85);
+  will-change: transform;
+}
+
+/* Live Studio Ping */
+.pulse-dot {
+  position: relative;
+}
+.pulse-dot::after {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 1.5px solid var(--emerald);
+  opacity: 0.7;
+  animation: pvLivePing 1.9s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+@keyframes pvLivePing {
+  0% { transform: scale(0.7); opacity: 0.85; }
+  80%, 100% { transform: scale(2.1); opacity: 0; }
+}
+
+/* Hamburger 3-Line Morph into X when open */
+.pv-hamburger-btn[aria-expanded="true"] span:nth-child(1) {
+  transform: translate3d(0, 6.7px, 0) rotate(45deg);
+}
+.pv-hamburger-btn[aria-expanded="true"] span:nth-child(2) {
+  opacity: 0;
+  transform: translate3d(-8px, 0, 0) scaleX(0.2);
+}
+.pv-hamburger-btn[aria-expanded="true"] span:nth-child(3) {
+  transform: translate3d(0, -6.7px, 0) rotate(-45deg);
+}
+
+/* Liquid Click Ripple */
+.pv-ripple-host {
+  position: relative;
+  overflow: hidden;
+}
+.pv-ripple-wave {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.65) 0%, rgba(88, 213, 255, 0.35) 55%, transparent 72%);
+  transform: translate3d(-50%, -50%, 0) scale(0);
+  opacity: 0.9;
+  animation: pvRippleExpand 0.54s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  z-index: 2;
+}
+@keyframes pvRippleExpand {
+  0% { transform: translate3d(-50%, -50%, 0) scale(0); opacity: 0.9; }
+  100% { transform: translate3d(-50%, -50%, 0) scale(2.6); opacity: 0; }
+}
+
+/* Micro Sparkle Burst on Add-to-Cart / Key Clicks */
+.pv-spark {
+  position: fixed;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  background: var(--cyan);
+  box-shadow: 0 0 10px var(--cyan);
+  animation: pvSparkFly 0.52s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.pv-spark.emerald {
+  background: var(--emerald);
+  box-shadow: 0 0 10px var(--emerald);
+}
+@keyframes pvSparkFly {
+  0% { transform: translate3d(0, 0, 0) scale(1); opacity: 1; }
+  100% { transform: translate3d(var(--dx, 0px), var(--dy, 0px), 0) scale(0.15); opacity: 0; }
+}
+
+/* Animated Sheen Sweep on Primary CTA Buttons */
+.btn:not(.ghost),
+.pv-gate-btn {
+  position: relative;
+  overflow: hidden;
+}
+.btn:not(.ghost)::after,
+.pv-gate-btn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 65%;
+  height: 100%;
+  background: linear-gradient(105deg, transparent 20%, rgba(255, 255, 255, 0.34) 50%, transparent 80%);
+  transform: skewX(-18deg);
+  animation: pvSheenSweep 4.6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  pointer-events: none;
+}
+@keyframes pvSheenSweep {
+  0%, 62% { left: -120%; }
+  100% { left: 165%; }
+}
+
+/* Cart Pop Bounce & Card Flash */
+.pv-cart-pop {
+  animation: pvCartBounce 0.44s cubic-bezier(0.22, 1, 0.36, 1);
+}
+@keyframes pvCartBounce {
+  0% { transform: scale(1); }
+  35% { transform: scale(1.12); box-shadow: 0 0 26px rgba(88, 213, 255, 0.72); }
+  70% { transform: scale(0.96); }
+  100% { transform: scale(1); }
+}
+
+.pv-pop-in {
+  animation: pvPopIn 0.3s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@keyframes pvPopIn {
+  0% { opacity: 0; transform: scale(0.84); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+.pv-filter-in {
+  animation: pvFilterSlide 0.34s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@keyframes pvFilterSlide {
+  0% { opacity: 0; transform: translate3d(0, 14px, 0) scale(0.97); }
+  100% { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
+}
+
+/* Hero Staggered Entrance */
+.hero-badge { animation: pvHeroRise 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.04s both; }
+.hero-top-showcase h1 { animation: pvHeroRise 0.62s cubic-bezier(0.22, 1, 0.36, 1) 0.12s both; }
+.hero-top-showcase p { animation: pvHeroRise 0.62s cubic-bezier(0.22, 1, 0.36, 1) 0.2s both; }
+.steps-strip { animation: pvHeroRise 0.62s cubic-bezier(0.22, 1, 0.36, 1) 0.28s both; }
+.hero-top-showcase .btns { animation: pvHeroRise 0.62s cubic-bezier(0.22, 1, 0.36, 1) 0.36s both; }
+@keyframes pvHeroRise {
+  0% { opacity: 0; transform: translate3d(0, 18px, 0); }
+  100% { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+
+/* Staggered Cascade Inside Left Slide-Out Drawer */
+.pv-side-backdrop.open .pv-side-item {
+  animation: pvDrawerItemIn 0.32s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.pv-side-backdrop.open .pv-side-item:nth-of-type(1) { animation-delay: 0.03s; }
+.pv-side-backdrop.open .pv-side-item:nth-of-type(2) { animation-delay: 0.06s; }
+.pv-side-backdrop.open .pv-side-item:nth-of-type(3) { animation-delay: 0.09s; }
+.pv-side-backdrop.open .pv-side-item:nth-of-type(4) { animation-delay: 0.12s; }
+.pv-side-backdrop.open .pv-side-item:nth-of-type(5) { animation-delay: 0.15s; }
+.pv-side-backdrop.open .pv-side-item:nth-of-type(6) { animation-delay: 0.18s; }
+.pv-side-backdrop.open .pv-side-item:nth-of-type(7) { animation-delay: 0.21s; }
+.pv-side-backdrop.open .pv-side-item:nth-of-type(8) { animation-delay: 0.24s; }
+.pv-side-backdrop.open .pv-side-item:nth-of-type(9) { animation-delay: 0.27s; }
+.pv-side-backdrop.open .pv-side-item:nth-of-type(10) { animation-delay: 0.30s; }
+@keyframes pvDrawerItemIn {
+  0% { opacity: 0; transform: translate3d(-14px, 0, 0); }
+  100% { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+
+/* Tactile Press Spring on Cards & Qty Buttons */
+.card-qty-btn:active,
+.qty-btn:active,
+.pv-priority-btn:active,
+.opt-pill:active,
+.nav-tab:active {
+  transform: scale(0.91);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn:not(.ghost)::after,
+  .pv-gate-btn::after,
+  .pulse-dot::after,
+  .pv-ripple-wave,
+  .pv-spark { animation: none !important; }
+}
+
+
+/* === SPRINGY POPUP-STYLE SMOOTH ANIMATIONS === */
+:root {
+  --spring-pop: cubic-bezier(0.34, 1.46, 0.64, 1);
+  --smooth-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Frosted Backdrops */
+.pv-gate-overlay,
+.pv-modal-backdrop,
+.pv-side-backdrop,
+.cart-backdrop {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* Login Gate Spring Popup */
+.pv-gate-overlay .pv-gate-frame {
+  transition: transform 0.44s var(--spring-pop), opacity 0.28s ease;
+}
+.pv-gate-overlay.pv-hidden .pv-gate-frame {
+  transform: translate3d(0, 28px, 0) scale(0.86);
+  opacity: 0;
+}
+
+/* My Orders & My Account Spring Popup */
+.pv-modal-card {
+  transform: translate3d(0, 26px, 0) scale(0.86);
+  opacity: 0;
+  transition: transform 0.42s var(--spring-pop), opacity 0.26s ease;
+}
+.pv-modal-backdrop.open .pv-modal-card {
+  transform: translate3d(0, 0, 0) scale(1);
+  opacity: 1;
+}
+
+.pv-modal-backdrop.open .pv-stat-box,
+.pv-modal-backdrop.open .pv-order-card {
+  animation: pvItemPopup 0.42s var(--spring-pop) both;
+}
+.pv-modal-backdrop.open .pv-stat-box:nth-child(2),
+.pv-modal-backdrop.open .pv-order-card:nth-child(2) { animation-delay: 0.06s; }
+.pv-modal-backdrop.open .pv-order-card:nth-child(3) { animation-delay: 0.12s; }
+.pv-modal-backdrop.open .pv-order-card:nth-child(4) { animation-delay: 0.18s; }
+
+/* Cart Drawer Item Spring Popup */
+.cart-backdrop.open .cart-item-row {
+  animation: pvItemPopup 0.38s var(--spring-pop) both;
+}
+.cart-backdrop.open .cart-item-row:nth-child(2) { animation-delay: 0.05s; }
+.cart-backdrop.open .cart-item-row:nth-child(3) { animation-delay: 0.10s; }
+.cart-backdrop.open .cart-item-row:nth-child(4) { animation-delay: 0.15s; }
+
+@keyframes pvItemPopup {
+  0% { opacity: 0; transform: translate3d(0, 14px, 0) scale(0.9); }
+  100% { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
+}
+
+/* Toast Notification Spring Popup */
+.toast {
+  transform: translate3d(-50%, 24px, 0) scale(0.84);
+  transition: transform 0.38s var(--spring-pop), opacity 0.22s ease;
+}
+.toast.show {
+  transform: translate3d(-50%, 0, 0) scale(1);
+  opacity: 1;
+  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.6), 0 0 22px rgba(88, 213, 255, 0.35);
+}
+
+/* Bottom Convenience Dock Smooth Popup Entrance */
+.convenience-dock {
+  animation: pvDockPopup 0.58s var(--spring-pop) 0.22s both;
+}
+@keyframes pvDockPopup {
+  0% { opacity: 0; transform: translate3d(-50%, 34px, 0) scale(0.92); }
+  100% { opacity: 1; transform: translate3d(-50%, 0, 0) scale(1); }
+}
+
+/* Card & Section Spring Popup Scroll Reveal */
+.pv-reveal {
+  opacity: 0;
+  transform: translate3d(0, 26px, 0) scale(0.92);
+  transition: opacity 0.46s var(--smooth-out), transform 0.56s var(--spring-pop);
+  will-change: opacity, transform;
+}
+.pv-reveal.is-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
+}
+
+/* Tactile Card Pop Pulse when Added / Selected */
+.pv-card-pop {
+  animation: pvCardPop 0.42s var(--spring-pop);
+}
+@keyframes pvCardPop {
+  0% { transform: scale(1); }
+  40% { transform: translate3d(0, -6px, 0) scale(1.03); }
+  100% { transform: translate3d(0, 0, 0) scale(1); }
+}
+
+/* FAQ Smooth Answer Popup */
+details[open] p {
+  animation: pvFaqPop 0.34s var(--spring-pop) both;
+}
+@keyframes pvFaqPop {
+  0% { opacity: 0; transform: translate3d(0, -6px, 0) scale(0.97); }
+  100% { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
+}
+
+/* Floating Mini Popup Chip (+₹500 Added) */
+.pv-float-chip {
+  position: fixed;
+  z-index: 9998;
+  pointer-events: none;
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.96), rgba(56, 189, 248, 0.96));
+  color: #020611;
+  font-family: Outfit, Inter, sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  box-shadow: 0 8px 22px rgba(41, 151, 255, 0.45);
+  white-space: nowrap;
+  transform: translate3d(-50%, 0, 0) scale(0.75);
+  animation: pvFloatChipPop 0.85s var(--spring-pop) forwards;
+}
+@keyframes pvFloatChipPop {
+  0% { opacity: 0; transform: translate3d(-50%, 8px, 0) scale(0.7); }
+  26% { opacity: 1; transform: translate3d(-50%, -14px, 0) scale(1.05); }
+  75% { opacity: 1; transform: translate3d(-50%, -26px, 0) scale(1); }
+  100% { opacity: 0; transform: translate3d(-50%, -42px, 0) scale(0.92); }
+}
+
+/* Side Account Box Popup inside Drawer */
+.pv-side-backdrop.open .pv-side-account-box {
+  animation: pvItemPopup 0.38s var(--spring-pop) 0.04s both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pv-float-chip,
+  .pv-card-pop,
+  .convenience-dock,
+  details[open] p { animation: none !important; }
+}
+
+
+/* === ZERO-LAG 60FPS MOBILE OPTIMIZATION & SMOOTH POP-UP / POP-DOWN === */
+/* Remove heavy mobile backdrop-filter blurs that cause frame drops & flickering */
+header#topHeader,
+.convenience-dock,
+.pv-gate-overlay,
+.pv-modal-backdrop,
+.pv-side-backdrop,
+.cart-backdrop {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+header#topHeader {
+  background: rgba(4, 9, 20, 0.96);
+}
+
+.convenience-dock {
+  background: rgba(7, 13, 26, 0.96);
+}
+
+.pv-gate-overlay {
+  background:
+    radial-gradient(ellipse 65% 50% at 15% 15%, rgba(41, 151, 255, 0.18), transparent 58%),
+    radial-gradient(ellipse 60% 50% at 85% 85%, rgba(88, 213, 255, 0.14), transparent 58%),
+    rgba(2, 5, 13, 0.88);
+  transition: opacity 0.28s cubic-bezier(0.22, 1, 0.36, 1), visibility 0.28s ease;
+}
+
+.pv-modal-backdrop,
+.pv-side-backdrop,
+.cart-backdrop {
+  background: rgba(2, 5, 13, 0.82);
+  transition: opacity 0.24s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Stop idle full-screen repaints & heavy filter drop-shadows */
+.liquid-glow-ring,
+.pv-gate-orb {
+  animation: none !important;
+  will-change: auto !important;
+}
+
+.hero-top-showcase h1 {
+  filter: none !important;
+}
+
+/* Replace layout-triggering left sheen with zero-cost GPU transform sheen */
+.btn:not(.ghost)::after,
+.pv-gate-btn::after {
+  left: 0 !important;
+  width: 55% !important;
+  transform: translate3d(-160%, 0, 0) skewX(-18deg);
+  animation: pvGpuSheen 5.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  will-change: transform;
+}
+@keyframes pvGpuSheen {
+  0%, 66% { transform: translate3d(-160%, 0, 0) skewX(-18deg); }
+  100% { transform: translate3d(280%, 0, 0) skewX(-18deg); }
+}
+
+/* Dedicated Smooth Pop-UP (open) and Pop-DOWN (close) for Login Window */
+.pv-gate-overlay .pv-gate-frame {
+  transform: translate3d(0, 52px, 0) scale(0.84);
+  opacity: 0;
+  transition: transform 0.38s cubic-bezier(0.22, 1.24, 0.36, 1), opacity 0.24s ease;
+  will-change: transform, opacity;
+}
+.pv-gate-overlay.pv-open .pv-gate-frame {
+  transform: translate3d(0, 0, 0) scale(1);
+  opacity: 1;
+}
+.pv-gate-overlay.pv-closing {
+  opacity: 0;
+  pointer-events: none;
+}
+.pv-gate-overlay.pv-closing .pv-gate-frame {
+  transform: translate3d(0, 58px, 0) scale(0.84);
+  opacity: 0;
+  transition: transform 0.24s cubic-bezier(0.4, 0, 0.8, 0.2), opacity 0.2s ease;
+}
+
+/* Dedicated Smooth Pop-UP & Pop-DOWN for My Orders & My Account Modals */
+.pv-modal-card {
+  transform: translate3d(0, 44px, 0) scale(0.86);
+  opacity: 0;
+  transition: transform 0.34s cubic-bezier(0.22, 1.22, 0.36, 1), opacity 0.22s ease;
+  will-change: transform, opacity;
+}
+.pv-modal-backdrop:not(.open) .pv-modal-card {
+  transition: transform 0.22s cubic-bezier(0.4, 0, 0.8, 0.2), opacity 0.18s ease;
+}
+.pv-modal-backdrop.open .pv-modal-card {
+  transform: translate3d(0, 0, 0) scale(1);
+  opacity: 1;
+}
+
+/* Smooth Compositor-Only Drawers (Left 3-Line Menu & Right Cart) */
+.pv-side-drawer,
+.cart-drawer {
+  will-change: transform;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Release will-change after card reveal completes to keep mobile GPU memory low */
+.pv-reveal {
+  opacity: 0;
+  transform: translate3d(0, 20px, 0) scale(0.95);
+  transition: opacity 0.38s cubic-bezier(0.22, 1, 0.36, 1), transform 0.44s cubic-bezier(0.22, 1.2, 0.36, 1);
+  will-change: opacity, transform;
+}
+.pv-reveal.is-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
+  will-change: auto;
+}
+
+/* Crisp Popup Pulse for Cards & Chips */
+.pv-card-pop {
+  animation: pvCardPopSmooth 0.34s cubic-bezier(0.22, 1.25, 0.36, 1);
+}
+@keyframes pvCardPopSmooth {
+  0% { transform: scale(1); }
+  45% { transform: translate3d(0, -4px, 0) scale(1.022); }
+  100% { transform: translate3d(0, 0, 0) scale(1); }
+}
+
+.pv-float-chip {
+  will-change: transform, opacity;
+  animation: pvFloatChipSmooth 0.72s cubic-bezier(0.22, 1.25, 0.36, 1) forwards;
+}
+@keyframes pvFloatChipSmooth {
+  0% { opacity: 0; transform: translate3d(-50%, 6px, 0) scale(0.72); }
+  28% { opacity: 1; transform: translate3d(-50%, -14px, 0) scale(1.04); }
+  75% { opacity: 1; transform: translate3d(-50%, -24px, 0) scale(1); }
+  100% { opacity: 0; transform: translate3d(-50%, -38px, 0) scale(0.9); }
+}
+
 </style>
 </head>
 <body>
+<div class="pv-scroll-progress" id="pvScrollProgress" aria-hidden="true"></div>
 
 <div class="ambient-liquid" aria-hidden="true">
   <div class="liquid-glow-ring"></div>
@@ -3707,6 +4253,17 @@ section > h2 {
     renderAllCartUI();
     renderAccountAndDrawerUI();
     persistCurrentState(true);
+    triggerCartBounce();
+  }
+
+  function triggerCartBounce() {
+    ["openCartHeaderBtn", "dockCartBtn", "heroOpenCartBtn"].forEach(function (cid) {
+      var el = document.getElementById(cid);
+      if (!el) return;
+      el.classList.remove("pv-cart-pop");
+      void el.offsetWidth;
+      el.classList.add("pv-cart-pop");
+    });
   }
 
   function updateCartQty(id, delta) {
@@ -3722,6 +4279,7 @@ section > h2 {
     renderAllCartUI();
     renderAccountAndDrawerUI();
     persistCurrentState(true);
+    triggerCartBounce();
   }
 
   function buildBriefText(customNote) {
@@ -3964,7 +4522,7 @@ section > h2 {
         var qty = state.cart[cartIdx].qty;
         if (!existingStepper && actionsRow) {
           existingStepper = document.createElement("div");
-          existingStepper.className = "card-qty-wrap";
+          existingStepper.className = "card-qty-wrap pv-pop-in";
           existingStepper.innerHTML =
             '<button type="button" class="card-qty-btn" data-card-qty-id="' + escapeHtml(itemId) + '" data-card-qty-delta="-1" aria-label="Decrease quantity">−</button>' +
             '<span class="card-qty-val">' + qty + '</span>' +
@@ -4417,7 +4975,10 @@ section > h2 {
       var textMatch = !q || card.textContent.toLowerCase().indexOf(q) !== -1;
       var show = catMatch && textMatch;
       card.hidden = !show;
-      if (show) visibleCount++;
+      if (show) {
+        visibleCount++;
+        card.classList.add("is-visible");
+      }
     });
     if (serviceSearchClear) serviceSearchClear.hidden = !q;
 
@@ -4679,7 +5240,10 @@ section > h2 {
     /* Smooth staggered scroll-reveal for cards & FAQs */
     var revealNodes = Array.prototype.slice.call(document.querySelectorAll("section:not(#home) .card, section:not(#home) details"));
     if ("IntersectionObserver" in window && revealNodes.length > 0) {
-      revealNodes.forEach(function (node) { node.classList.add("pv-reveal"); });
+      revealNodes.forEach(function (node, idx) {
+        node.classList.add("pv-reveal");
+        node.style.transitionDelay = ((idx % 4) * 55) + "ms";
+      });
       var revObs = new IntersectionObserver(function (entries) {
         entries.forEach(function (entry) {
           if (entry.isIntersecting) {
@@ -4689,6 +5253,101 @@ section > h2 {
         });
       }, { threshold: 0.08, rootMargin: "0px 0px -24px 0px" });
       revealNodes.forEach(function (node) { revObs.observe(node); });
+    }
+
+    /* Universal 60fps Liquid Ripple + Micro Sparkle Burst on Clicks */
+    var RIPPLE_SEL = ".btn, .cart-add-btn, .cart-trigger-btn, .pv-side-item, .opt-pill, .pv-priority-btn, .pv-hamburger-btn, .pv-gate-btn, .pv-skip-btn, .status-pill, .pv-top-auth-btn, .quick-wa-mini, .card-qty-btn, .qty-btn, .pv-inline-login-btn";
+    var SPARK_SEL = ".cart-add-btn, .card-qty-btn, #pvAccSaveBtn, #pvVerifyOtpBtn, .btn:not(.ghost)";
+
+    function spawnRipple(target, clientX, clientY) {
+      var rect = target.getBoundingClientRect();
+      if (!rect.width || !rect.height) return;
+      target.classList.add("pv-ripple-host");
+      var size = Math.max(rect.width, rect.height);
+      var x = (typeof clientX === "number" && clientX > 0) ? (clientX - rect.left) : rect.width / 2;
+      var y = (typeof clientY === "number" && clientY > 0) ? (clientY - rect.top) : rect.height / 2;
+      var wave = document.createElement("span");
+      wave.className = "pv-ripple-wave";
+      wave.style.width = size + "px";
+      wave.style.height = size + "px";
+      wave.style.left = x + "px";
+      wave.style.top = y + "px";
+      target.appendChild(wave);
+      setTimeout(function () { if (wave.parentNode) wave.parentNode.removeChild(wave); }, 560);
+    }
+
+    function spawnSparks(clientX, clientY, useEmerald) {
+      if (typeof clientX !== "number" || typeof clientY !== "number") return;
+      for (var s = 0; s < 4; s++) {
+        var angle = (Math.PI * 2 * s) / 4 + (Math.random() * 0.4);
+        var dist = 24 + Math.random() * 20;
+        var sp = document.createElement("span");
+        sp.className = "pv-spark" + (useEmerald ? " emerald" : "");
+        sp.style.left = clientX + "px";
+        sp.style.top = clientY + "px";
+        sp.style.setProperty("--dx", Math.cos(angle) * dist + "px");
+        sp.style.setProperty("--dy", Math.sin(angle) * dist + "px");
+        document.body.appendChild(sp);
+        setTimeout((function (node) {
+          return function () { if (node.parentNode) node.parentNode.removeChild(node); };
+        })(sp), 540);
+      }
+    }
+
+    function spawnFloatChip(clientX, clientY, label) {
+      if (typeof clientX !== "number" || typeof clientY !== "number") return;
+      var chip = document.createElement("span");
+      chip.className = "pv-float-chip";
+      chip.textContent = label;
+      chip.style.left = clientX + "px";
+      chip.style.top = Math.max(24, clientY - 12) + "px";
+      document.body.appendChild(chip);
+      setTimeout(function () { if (chip.parentNode) chip.parentNode.removeChild(chip); }, 880);
+    }
+
+    function pulseParentCard(el) {
+      var card = el && el.closest ? el.closest(".card") : null;
+      if (!card) return;
+      card.classList.remove("pv-card-pop");
+      void card.offsetWidth;
+      card.classList.add("pv-card-pop");
+    }
+
+    document.addEventListener("pointerdown", function (e) {
+      var btn = e.target.closest(RIPPLE_SEL);
+      if (btn && !btn.disabled) {
+        spawnRipple(btn, e.clientX, e.clientY);
+        if (btn.matches(SPARK_SEL)) {
+          spawnSparks(e.clientX, e.clientY, btn.classList.contains("cart-add-btn") || btn.classList.contains("card-qty-btn"));
+        }
+        if (btn.classList.contains("cart-add-btn")) {
+          var p = parseInt(btn.getAttribute("data-cart-price") || "0", 10);
+          spawnFloatChip(e.clientX, e.clientY, p > 0 ? ("+ " + formatINR(p) + " Added") : "✓ Added");
+          pulseParentCard(btn);
+        } else if (btn.classList.contains("card-qty-btn")) {
+          var d = parseInt(btn.getAttribute("data-card-qty-delta") || "0", 10);
+          spawnFloatChip(e.clientX, e.clientY, d > 0 ? "+1 Added" : "−1 Updated");
+          pulseParentCard(btn);
+        } else if (btn.id === "pvAccSaveBtn") {
+          spawnFloatChip(e.clientX, e.clientY, "✓ Profile Saved");
+        }
+      }
+    }, { passive: true });
+
+    /* Smooth Top Scroll Progress Hairline */
+    var progressBar = document.getElementById("pvScrollProgress");
+    if (progressBar) {
+      var rafScroll = false;
+      window.addEventListener("scroll", function () {
+        if (rafScroll) return;
+        rafScroll = true;
+        requestAnimationFrame(function () {
+          var maxScroll = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+          var ratio = Math.min(1, Math.max(0, window.scrollY / maxScroll));
+          progressBar.style.transform = "scaleX(" + ratio.toFixed(4) + ")";
+          rafScroll = false;
+        });
+      }, { passive: true });
     }
   }
 
@@ -4913,7 +5572,10 @@ section > h2 {
     otpBoxesWrap.classList.add('pv-shake');
   }
 
+  var closeModalTimer = null;
+
   function openAuthModal() {
+    if (closeModalTimer) { clearTimeout(closeModalTimer); closeModalTimer = null; }
     setShieldState(false);
     setStepDots(1);
     stepVer.classList.add('pv-step-hidden');
@@ -4922,16 +5584,34 @@ section > h2 {
     subtitle.textContent = 'Sign in quickly with a free 6-digit Email OTP, or skip straight to the website.';
     clearMsg(statusReq);
     clearMsg(statusVer);
-    document.body.classList.add('pv-locked');
+    overlay.classList.remove('pv-closing');
+    overlay.classList.remove('pv-open');
     overlay.classList.remove('pv-hidden');
+    document.body.classList.add('pv-locked');
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        overlay.classList.add('pv-open');
+      });
+    });
   }
 
   function closeAuthModal(markSkipped) {
-    document.body.classList.remove('pv-locked');
-    overlay.classList.add('pv-hidden');
     if (markSkipped) {
       try { sessionStorage.setItem(SKIP_KEY, '1'); } catch (_) {}
     }
+    if (overlay.classList.contains('pv-hidden')) {
+      document.body.classList.remove('pv-locked');
+      return;
+    }
+    overlay.classList.remove('pv-open');
+    overlay.classList.add('pv-closing');
+    if (closeModalTimer) clearTimeout(closeModalTimer);
+    closeModalTimer = setTimeout(function () {
+      overlay.classList.add('pv-hidden');
+      overlay.classList.remove('pv-closing');
+      document.body.classList.remove('pv-locked');
+      closeModalTimer = null;
+    }, 250);
   }
 
   function unlockSite(userObj, immediate) {
