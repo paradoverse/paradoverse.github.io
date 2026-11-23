@@ -699,6 +699,64 @@ p {
   font-size: clamp(15px, 1.9vw, 18px);
 }
 
+.appbox-hero-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 14px;
+  padding: 5px 13px 5px 6px;
+  border-radius: 999px;
+  background: rgba(10, 132, 255, 0.1);
+  border: 1px solid rgba(125, 211, 252, 0.3);
+  color: var(--text-secondary);
+  font-size: 12.4px;
+  font-weight: 500;
+  line-height: 1.35;
+  touch-action: manipulation;
+  transition: transform 0.18s var(--ease-spring), background 0.18s ease, border-color 0.18s ease, color 0.18s ease;
+}
+
+.appbox-hero-pill:hover {
+  background: rgba(10, 132, 255, 0.18);
+  border-color: rgba(125, 211, 252, 0.62);
+  color: var(--white);
+  transform: translate3d(0, -1px, 0);
+}
+
+.appbox-hero-pill:active {
+  transform: scale(0.97);
+}
+
+.appbox-hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2.5px 9px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #0A84FF 0%, #38BDF8 100%);
+  color: var(--white);
+  font-family: Outfit, -apple-system, BlinkMacSystemFont, Inter, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.appbox-hero-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  color: var(--accent-sky);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.appbox-hero-pill:hover .appbox-hero-link {
+  color: var(--white);
+}
+
 .steps-strip {
   display: flex;
   flex-wrap: wrap;
@@ -2647,6 +2705,12 @@ body.pv-locked > *:not(#pvGateOverlay):not(#toastBanner) {
       </button>
       <h1>We create beyond limits.</h1>
       <p>Pick your video editing, VFX, or promotion services, tap your video format &amp; style right on this website, and send a 100% ready order to WhatsApp, Email, Gmail, or Instagram in one tap.</p>
+
+      <a class="appbox-hero-pill" href="https://hostyoursite.github.io/" target="_blank" rel="noopener noreferrer">
+        <span class="appbox-hero-tag">App Box</span>
+        <span>For website development &amp; web design</span>
+        <span class="appbox-hero-link">Visit Site <svg class="ic-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"></path><path d="M7 7h10v10"></path></svg></span>
+      </a>
 
       <div class="steps-strip">
         <div class="step-pill"><strong>1. Pick Services</strong> — Add to Cart</div>
