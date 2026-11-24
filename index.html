@@ -118,7 +118,6 @@ html {
   max-width: 100%;
   overflow-x: clip;
   background: var(--bg);
-  scroll-behavior: smooth;
   scroll-padding-top: 104px;
 }
 
@@ -126,10 +125,7 @@ body {
   min-height: 100vh;
   max-width: 100%;
   overflow-x: clip;
-  background:
-    radial-gradient(ellipse 80% 42% at 50% -8%, rgba(14, 165, 233, 0.14), transparent 62%),
-    radial-gradient(ellipse 50% 35% at 88% 18%, rgba(10, 132, 255, 0.08), transparent 65%),
-    var(--bg);
+  background: linear-gradient(180deg, #09101E 0%, #050609 360px, #050609 100%);
   color: var(--text);
   font: 400 15.5px/1.6 -apple-system, BlinkMacSystemFont, "SF Pro Text", Inter, "Segoe UI", sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -260,6 +256,7 @@ summary:focus-visible {
   border-radius: 50%;
   background: var(--live);
   flex-shrink: 0;
+  contain: layout style;
 }
 
 .pulse-dot::after {
@@ -268,6 +265,7 @@ summary:focus-visible {
   inset: -3px;
   border-radius: 50%;
   border: 1px solid rgba(48, 209, 88, 0.6);
+  will-change: transform, opacity;
   animation: pvLivePing 2.4s cubic-bezier(0, 0, 0.2, 1) infinite;
 }
 
@@ -288,11 +286,9 @@ header#topHeader {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(9, 11, 16, 0.84);
+  background: rgba(9, 11, 16, 0.96);
   border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.42);
 }
 
 .bar {
@@ -442,8 +438,8 @@ nav[aria-label="Main"]::-webkit-scrollbar {
   background: linear-gradient(135deg, #0A84FF 0%, #0071E3 55%, #38BDF8 100%);
   border: 1px solid rgba(255, 255, 255, 0.42);
   pointer-events: none;
-  transition: transform 0.28s var(--ease-spring), width 0.28s var(--ease-spring);
-  will-change: transform, width;
+  transition: transform 0.22s cubic-bezier(0.22, 1, 0.36, 1), width 0.22s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
 }
 
 .nav-tab {
@@ -589,11 +585,11 @@ main.wrap.single-tab-mode > section[data-page] {
 
 main.wrap.single-tab-mode > section[data-page].active-page {
   display: block;
-  animation: pvFadeSlide 0.26s var(--ease-spring) forwards;
+  animation: pvFadeSlide 0.2s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 @keyframes pvFadeSlide {
-  0% { opacity: 0; transform: translate3d(0, 10px, 0); }
+  0% { opacity: 0; transform: translate3d(0, 6px, 0); }
   100% { opacity: 1; transform: translate3d(0, 0, 0); }
 }
 
@@ -636,11 +632,8 @@ p {
   padding: clamp(34px, 6vh, 64px) clamp(18px, 5vw, 52px) clamp(30px, 5vh, 50px);
   border-radius: 30px;
   border: 1px solid rgba(255, 255, 255, 0.16);
-  background:
-    radial-gradient(ellipse 68% 52% at 50% -12%, rgba(56, 189, 248, 0.18), transparent 64%),
-    radial-gradient(ellipse 46% 38% at 88% 96%, rgba(10, 132, 255, 0.16), transparent 66%),
-    linear-gradient(165deg, rgba(22, 28, 42, 0.94) 0%, rgba(11, 14, 22, 0.98) 100%);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.28), 0 20px 48px rgba(0, 0, 0, 0.65);
+  background: linear-gradient(165deg, #161E30 0%, #0C101A 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22), 0 14px 32px rgba(0, 0, 0, 0.55);
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -998,10 +991,8 @@ section > p.sub {
   position: relative;
   border: 1px solid var(--glass-border);
   border-radius: 22px;
-  background:
-    radial-gradient(ellipse 85% 45% at 50% -18%, rgba(56, 189, 248, 0.09), transparent 65%),
-    linear-gradient(160deg, rgba(22, 27, 38, 0.94) 0%, rgba(12, 15, 22, 0.98) 100%);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 10px 26px rgba(0, 0, 0, 0.45);
+  background: linear-gradient(165deg, #161C28 0%, #0C1018 100%);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.36);
 }
 
 .card {
@@ -1011,8 +1002,8 @@ section > p.sub {
   flex-direction: column;
   justify-content: space-between;
   overflow: hidden;
-  contain: layout style;
-  transition: transform 0.22s var(--ease-spring), border-color 0.2s ease;
+  contain: layout paint style;
+  transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.18s ease;
 }
 
 .card::before {
@@ -1041,9 +1032,7 @@ section > p.sub {
 .card.in-cart,
 .card.selected-col {
   border-color: rgba(56, 189, 248, 0.75);
-  background:
-    radial-gradient(ellipse 85% 50% at 50% -15%, rgba(10, 132, 255, 0.22), transparent 68%),
-    linear-gradient(160deg, rgba(18, 30, 52, 0.96) 0%, rgba(12, 17, 28, 0.98) 100%);
+  background: linear-gradient(160deg, #152540 0%, #0D1422 100%);
 }
 
 .col-badge-row {
@@ -1512,12 +1501,10 @@ input:focus, select:focus, textarea:focus {
 .pv-modal-backdrop {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.68);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
+  background: rgba(0, 0, 0, 0.76);
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.22s ease;
+  transition: opacity 0.2s ease;
 }
 
 .cart-backdrop {
@@ -1986,11 +1973,9 @@ input:focus, select:focus, textarea:focus {
   width: min(calc(100vw - 20px), 860px);
   padding: 9px 13px;
   border-radius: 24px;
-  background: rgba(14, 18, 28, 0.88);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  background: rgba(13, 17, 26, 0.96);
   border: 1px solid rgba(255, 255, 255, 0.18);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 14px 36px rgba(0, 0, 0, 0.72);
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.62);
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -2161,9 +2146,7 @@ body.pv-locked > *:not(#pvGateOverlay):not(#toastBanner) {
   align-items: center;
   justify-content: center;
   padding: 20px;
-  background: rgba(0, 0, 0, 0.72);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
+  background: rgba(0, 0, 0, 0.78);
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   opacity: 1;
@@ -2645,9 +2628,7 @@ body.pv-locked > *:not(#pvGateOverlay):not(#toastBanner) {
   align-items: center;
   padding: 34px 24px 28px;
   border-radius: 26px;
-  background:
-    radial-gradient(ellipse 75% 48% at 50% 0%, rgba(56, 189, 248, 0.14), transparent 65%),
-    linear-gradient(180deg, #101726 0%, #090D16 100%);
+  background: linear-gradient(180deg, #11192B 0%, #090D16 100%);
 }
 
 .pv-member-avatar-ring {
@@ -2658,7 +2639,7 @@ body.pv-locked > *:not(#pvGateOverlay):not(#toastBanner) {
   padding: 4px;
   border-radius: 50%;
   background: linear-gradient(135deg, #38BDF8 0%, #0A84FF 60%, #60A5FA 100%);
-  box-shadow: 0 0 28px rgba(56, 189, 248, 0.42);
+  box-shadow: 0 4px 14px rgba(56, 189, 248, 0.28);
   flex-shrink: 0;
 }
 
@@ -2829,10 +2810,10 @@ body.pv-locked > *:not(#pvGateOverlay):not(#toastBanner) {
     <nav aria-label="Main" id="mainNav">
       <div class="liquid-pill" id="liquidPill" aria-hidden="true"></div>
       <button type="button" class="nav-tab active" data-target="home">Home</button>
+      <button type="button" class="nav-tab" data-target="team">Team</button>
       <button type="button" class="nav-tab" data-target="services">Services</button>
       <button type="button" class="nav-tab" data-target="pricing">Pricing</button>
       <button type="button" class="nav-tab" data-target="network">Network</button>
-      <button type="button" class="nav-tab" data-target="team">Team</button>
       <button type="button" class="nav-tab" data-target="faq">FAQ</button>
       <button type="button" class="nav-tab" data-target="contact">Order</button>
     </nav>
@@ -2844,14 +2825,14 @@ body.pv-locked > *:not(#pvGateOverlay):not(#toastBanner) {
         <span>Cart (<span id="headerCartCount">1</span>)</span>
         <span id="headerCartTotal">₹500</span>
       </button>
-      <button type="button" class="mode-toggle" id="viewModeBtn" title="Switch between full scroll and single-tab focus">
-        <span id="viewModeLabel">Scroll</span>
+      <button type="button" class="mode-toggle" id="viewModeBtn" title="Switch between single-tab focus and full scroll">
+        <span id="viewModeLabel">Tabs</span>
       </button>
     </div>
   </div>
 </header>
 
-<main class="wrap" id="mainContainer">
+<main class="wrap single-tab-mode" id="mainContainer">
 
   <!-- HERO SECTION -->
   <section id="home" data-page="home" class="hero active-page">
@@ -2882,6 +2863,166 @@ body.pv-locked > *:not(#pvGateOverlay):not(#toastBanner) {
         </button>
         <button type="button" class="btn ghost" id="heroStartProjectBtn">Build &amp; Send Order</button>
       </div>
+    </div>
+  </section>
+
+  <!-- TEAM SECTION -->
+  <section id="team" data-page="team">
+    <h2>The Paradoverse Team</h2>
+    <p class="sub">Connect directly with any team member via WhatsApp or Instagram, or select their desk for your order.</p>
+
+    <div class="pv-team-grid" id="teamGrid">
+
+      <!-- 1. MANAS RAJ -->
+      <article class="card pv-member-card" data-member="Manas Raj">
+        <div class="pv-member-avatar-ring">
+          <div class="pv-member-avatar-inner">
+            MR
+            <img src="manas.jpg" alt="Manas Raj" loading="lazy" decoding="async" width="120" height="120" onerror="this.remove()">
+          </div>
+        </div>
+        <div class="pv-member-title-row">
+          <h3>Founder — Paradoverse</h3>
+          <span class="pv-member-pill">Direct 1-on-1 Desk</span>
+        </div>
+        <div class="pv-member-sub">
+          <strong>Manas Raj</strong> / Founder &amp; Creative Director &bull; Paradoverse
+        </div>
+        <p class="pv-member-bio">
+          Founder of Paradoverse. Oversees creative direction, full-scale brand campaigns, VFX quality, and executive partnerships.
+        </p>
+        <div class="pv-member-actions">
+          <a class="pv-member-btn wa" href="https://wa.me/917079050010?text=Hi%20Manas%2C%20I%27d%20like%20to%20discuss%20a%20project%20with%20Paradoverse." target="_blank" rel="noopener noreferrer">WhatsApp Manas</a>
+          <a class="pv-member-btn ig" href="https://instagram.com/paradoverse.media" target="_blank" rel="noopener noreferrer">Instagram: @paradoverse.media &#8599;</a>
+          <button type="button" class="quick-wa-mini pv-member-desk-btn" data-select-member="Manas Raj">Select Desk</button>
+        </div>
+      </article>
+
+      <!-- 2. ADITYA GIRI -->
+      <article class="card pv-member-card" data-member="Aditya Giri">
+        <div class="pv-member-avatar-ring">
+          <div class="pv-member-avatar-inner">
+            AG
+            <img src="aditya.jpg" alt="Aditya Giri" loading="lazy" decoding="async" width="120" height="120" onerror="this.remove()">
+          </div>
+        </div>
+        <div class="pv-member-title-row">
+          <h3>Short-Form — Paradoverse</h3>
+          <span class="pv-member-pill">Viral Reels Desk</span>
+        </div>
+        <div class="pv-member-sub">
+          <strong>Aditya Giri</strong> / Short-Form Viral Editor &bull; Paradoverse
+        </div>
+        <p class="pv-member-bio">
+          Focused on vertical hook engineering, beat-synced Reels, Shorts pacing, and high-retention caption styling.
+        </p>
+        <div class="pv-member-actions">
+          <a class="pv-member-btn wa" href="https://wa.me/917079050010?text=Hi%20Aditya%2C%20I%27d%20like%20to%20get%20Reels%20%2F%20Shorts%20edited." target="_blank" rel="noopener noreferrer">WhatsApp Aditya</a>
+          <a class="pv-member-btn ig" href="https://instagram.com/paradoverse.media" target="_blank" rel="noopener noreferrer">Instagram: @paradoverse.media &#8599;</a>
+          <button type="button" class="quick-wa-mini pv-member-desk-btn" data-select-member="Aditya Giri">Select Desk</button>
+        </div>
+      </article>
+
+      <!-- 3. PURUSHOTTAM GIRI -->
+      <article class="card pv-member-card" data-member="Purushottam Giri">
+        <div class="pv-member-avatar-ring">
+          <div class="pv-member-avatar-inner">
+            PG
+            <img src="purushottam.jpg" alt="Purushottam Giri" loading="lazy" decoding="async" width="120" height="120" onerror="this.remove()">
+          </div>
+        </div>
+        <div class="pv-member-title-row">
+          <h3>Delivery &amp; Audio — Paradoverse</h3>
+          <span class="pv-member-pill">Client Delivery Desk</span>
+        </div>
+        <div class="pv-member-sub">
+          <strong>Purushottam Giri</strong> / Client Delivery &amp; Audio &bull; Paradoverse
+        </div>
+        <p class="pv-member-bio">
+          Coordinates multi-channel posting schedules, lyric video visuals, and rapid client turnaround from brief to delivery.
+        </p>
+        <div class="pv-member-actions">
+          <a class="pv-member-btn wa" href="https://wa.me/917079050010?text=Hi%20Purushottam%2C%20I%27d%20like%20to%20coordinate%20a%20Paradoverse%20order." target="_blank" rel="noopener noreferrer">WhatsApp Purushottam</a>
+          <a class="pv-member-btn ig" href="https://instagram.com/purushottam_giri_2009" target="_blank" rel="noopener noreferrer">Instagram: @purushottam_giri_2009 &#8599;</a>
+          <button type="button" class="quick-wa-mini pv-member-desk-btn" data-select-member="Purushottam Giri">Select Desk</button>
+        </div>
+      </article>
+
+      <!-- 4. UTKARSH SHARAN -->
+      <article class="card pv-member-card" data-member="Utkarsh Sharan">
+        <div class="pv-member-avatar-ring">
+          <div class="pv-member-avatar-inner">
+            US
+            <img src="utkarsh.jpg" alt="Utkarsh Sharan" loading="lazy" decoding="async" width="120" height="120" onerror="this.remove()">
+          </div>
+        </div>
+        <div class="pv-member-title-row">
+          <h3>Lead VFX — Paradoverse</h3>
+          <span class="pv-member-pill">Editing &amp; VFX Desk</span>
+        </div>
+        <div class="pv-member-sub">
+          <strong>Utkarsh Sharan</strong> / Lead Editing &amp; VFX &bull; Paradoverse
+        </div>
+        <p class="pv-member-bio">
+          Specializes in high-retention cuts, cinematic color grading, seamless transitions, and visual effects compositing.
+        </p>
+        <div class="pv-member-actions">
+          <a class="pv-member-btn wa" href="https://wa.me/917079050010?text=Hi%20Utkarsh%2C%20I%27d%20like%20to%20book%20a%20Video%20Editing%20%2F%20VFX%20project." target="_blank" rel="noopener noreferrer">WhatsApp Utkarsh</a>
+          <a class="pv-member-btn ig" href="https://instagram.com/paradoverse.media" target="_blank" rel="noopener noreferrer">Instagram: @paradoverse.media &#8599;</a>
+          <button type="button" class="quick-wa-mini pv-member-desk-btn" data-select-member="Utkarsh Sharan">Select Desk</button>
+        </div>
+      </article>
+
+      <!-- 5. MAYANK RAJ -->
+      <article class="card pv-member-card" data-member="Mayank Raj">
+        <div class="pv-member-avatar-ring">
+          <div class="pv-member-avatar-inner">
+            MR
+            <img src="myank.jpg" alt="Mayank Raj" loading="lazy" decoding="async" width="120" height="120" onerror="this.remove()">
+          </div>
+        </div>
+        <div class="pv-member-title-row">
+          <h3>Motion &amp; 3D — Paradoverse</h3>
+          <span class="pv-member-pill">3D &amp; Titles Desk</span>
+        </div>
+        <div class="pv-member-sub">
+          <strong>Mayank Raj</strong> / Motion &amp; 3D Titles &bull; Paradoverse
+        </div>
+        <p class="pv-member-bio">
+          Crafts dynamic typography, animated titles, logo stings, and visual polish for creators and brands.
+        </p>
+        <div class="pv-member-actions">
+          <a class="pv-member-btn wa" href="https://wa.me/917079050010?text=Hi%20Mayank%2C%20I%27d%20like%20to%20discuss%20a%20Motion%20%26%203D%20Titles%20project." target="_blank" rel="noopener noreferrer">WhatsApp Mayank</a>
+          <a class="pv-member-btn ig" href="https://instagram.com/paradoverse.media" target="_blank" rel="noopener noreferrer">Instagram: @paradoverse.media &#8599;</a>
+          <button type="button" class="quick-wa-mini pv-member-desk-btn" data-select-member="Mayank Raj">Select Desk</button>
+        </div>
+      </article>
+
+      <!-- 6. SONU SHARMA -->
+      <article class="card pv-member-card" data-member="Sonu Sharma">
+        <div class="pv-member-avatar-ring">
+          <div class="pv-member-avatar-inner">
+            SS
+            <img src="sonu.jpg" alt="Sonu Sharma" loading="lazy" decoding="async" width="120" height="120" onerror="this.remove()">
+          </div>
+        </div>
+        <div class="pv-member-title-row">
+          <h3>Distribution — Paradoverse</h3>
+          <span class="pv-member-pill">Promo &amp; Reach Desk</span>
+        </div>
+        <div class="pv-member-sub">
+          <strong>Sonu Sharma</strong> / Distribution &amp; Reach &bull; Paradoverse
+        </div>
+        <p class="pv-member-bio">
+          Manages song and movie promotion waves across Instagram and YouTube to maximize organic audience reach.
+        </p>
+        <div class="pv-member-actions">
+          <a class="pv-member-btn wa" href="https://wa.me/917079050010?text=Hi%20Sonu%2C%20I%27d%20like%20to%20book%20a%20Song%20%2F%20Movie%20Promotion%20campaign." target="_blank" rel="noopener noreferrer">WhatsApp Sonu</a>
+          <a class="pv-member-btn ig" href="https://instagram.com/paradoverse.media" target="_blank" rel="noopener noreferrer">Instagram: @paradoverse.media &#8599;</a>
+          <button type="button" class="quick-wa-mini pv-member-desk-btn" data-select-member="Sonu Sharma">Select Desk</button>
+        </div>
+      </article>
+
     </div>
   </section>
 
@@ -3134,165 +3275,7 @@ body.pv-locked > *:not(#pvGateOverlay):not(#toastBanner) {
     </div>
   </section>
 
-<!-- TEAM SECTION -->
-  <section id="team" data-page="team">
-    <h2>The Paradoverse Team</h2>
-    <p class="sub">Connect directly with any team member via WhatsApp or Instagram, or select their desk for your order.</p>
 
-    <div class="pv-team-grid" id="teamGrid">
-
-      <!-- 1. MANAS RAJ -->
-      <article class="card pv-member-card" data-member="Manas Raj">
-        <div class="pv-member-avatar-ring">
-          <div class="pv-member-avatar-inner">
-            MR
-            <img src="manas.jpg" alt="Manas Raj" loading="lazy" onerror="this.remove()">
-          </div>
-        </div>
-        <div class="pv-member-title-row">
-          <h3>Founder — Paradoverse</h3>
-          <span class="pv-member-pill">Direct 1-on-1 Desk</span>
-        </div>
-        <div class="pv-member-sub">
-          <strong>Manas Raj</strong> / Founder &amp; Creative Director &bull; Paradoverse
-        </div>
-        <p class="pv-member-bio">
-          Founder of Paradoverse. Oversees creative direction, full-scale brand campaigns, VFX quality, and executive partnerships.
-        </p>
-        <div class="pv-member-actions">
-          <a class="pv-member-btn wa" href="https://wa.me/917079050010?text=Hi%20Manas%2C%20I%27d%20like%20to%20discuss%20a%20project%20with%20Paradoverse." target="_blank" rel="noopener noreferrer">WhatsApp Manas</a>
-          <a class="pv-member-btn ig" href="https://instagram.com/paradoverse.media" target="_blank" rel="noopener noreferrer">Instagram: @paradoverse.media &#8599;</a>
-          <button type="button" class="quick-wa-mini pv-member-desk-btn" data-select-member="Manas Raj">Select Desk</button>
-        </div>
-      </article>
-
-      <!-- 2. UTKARSH SHARAN -->
-      <article class="card pv-member-card" data-member="Utkarsh Sharan">
-        <div class="pv-member-avatar-ring">
-          <div class="pv-member-avatar-inner">
-            US
-            <img src="utkarsh.jpg" alt="Utkarsh Sharan" loading="lazy" onerror="this.remove()">
-          </div>
-        </div>
-        <div class="pv-member-title-row">
-          <h3>Lead VFX — Paradoverse</h3>
-          <span class="pv-member-pill">Editing &amp; VFX Desk</span>
-        </div>
-        <div class="pv-member-sub">
-          <strong>Utkarsh Sharan</strong> / Lead Editing &amp; VFX &bull; Paradoverse
-        </div>
-        <p class="pv-member-bio">
-          Specializes in high-retention cuts, cinematic color grading, seamless transitions, and visual effects compositing.
-        </p>
-        <div class="pv-member-actions">
-          <a class="pv-member-btn wa" href="https://wa.me/917079050010?text=Hi%20Utkarsh%2C%20I%27d%20like%20to%20book%20a%20Video%20Editing%20%2F%20VFX%20project." target="_blank" rel="noopener noreferrer">WhatsApp Utkarsh</a>
-          <a class="pv-member-btn ig" href="https://instagram.com/paradoverse.media" target="_blank" rel="noopener noreferrer">Instagram: @paradoverse.media &#8599;</a>
-          <button type="button" class="quick-wa-mini pv-member-desk-btn" data-select-member="Utkarsh Sharan">Select Desk</button>
-        </div>
-      </article>
-
-      <!-- 3. MAYANK RAJ -->
-      <article class="card pv-member-card" data-member="Mayank Raj">
-        <div class="pv-member-avatar-ring">
-          <div class="pv-member-avatar-inner">
-            MR
-            <img src="myank.jpg" alt="Mayank Raj" loading="lazy" onerror="this.remove()">
-          </div>
-        </div>
-        <div class="pv-member-title-row">
-          <h3>Motion &amp; 3D — Paradoverse</h3>
-          <span class="pv-member-pill">3D &amp; Titles Desk</span>
-        </div>
-        <div class="pv-member-sub">
-          <strong>Mayank Raj</strong> / Motion &amp; 3D Titles &bull; Paradoverse
-        </div>
-        <p class="pv-member-bio">
-          Crafts dynamic typography, animated titles, logo stings, and visual polish for creators and brands.
-        </p>
-        <div class="pv-member-actions">
-          <a class="pv-member-btn wa" href="https://wa.me/917079050010?text=Hi%20Mayank%2C%20I%27d%20like%20to%20discuss%20a%20Motion%20%26%203D%20Titles%20project." target="_blank" rel="noopener noreferrer">WhatsApp Mayank</a>
-          <a class="pv-member-btn ig" href="https://instagram.com/paradoverse.media" target="_blank" rel="noopener noreferrer">Instagram: @paradoverse.media &#8599;</a>
-          <button type="button" class="quick-wa-mini pv-member-desk-btn" data-select-member="Mayank Raj">Select Desk</button>
-        </div>
-      </article>
-
-      <!-- 4. PURUSHOTTAM GIRI -->
-      <article class="card pv-member-card" data-member="Purushottam Giri">
-        <div class="pv-member-avatar-ring">
-          <div class="pv-member-avatar-inner">
-            PG
-            <img src="purushottam.jpg" alt="Purushottam Giri" loading="lazy" onerror="this.remove()">
-          </div>
-        </div>
-        <div class="pv-member-title-row">
-          <h3>Delivery &amp; Audio — Paradoverse</h3>
-          <span class="pv-member-pill">Client Delivery Desk</span>
-        </div>
-        <div class="pv-member-sub">
-          <strong>Purushottam Giri</strong> / Client Delivery &amp; Audio &bull; Paradoverse
-        </div>
-        <p class="pv-member-bio">
-          Coordinates multi-channel posting schedules, lyric video visuals, and rapid client turnaround from brief to delivery.
-        </p>
-        <div class="pv-member-actions">
-          <a class="pv-member-btn wa" href="https://wa.me/917079050010?text=Hi%20Purushottam%2C%20I%27d%20like%20to%20coordinate%20a%20Paradoverse%20order." target="_blank" rel="noopener noreferrer">WhatsApp Purushottam</a>
-          <a class="pv-member-btn ig" href="https://instagram.com/purushottam_giri_2009" target="_blank" rel="noopener noreferrer">Instagram: @purushottam_giri_2009 &#8599;</a>
-          <button type="button" class="quick-wa-mini pv-member-desk-btn" data-select-member="Purushottam Giri">Select Desk</button>
-        </div>
-      </article>
-
-      <!-- 5. ADITYA GIRI -->
-      <article class="card pv-member-card" data-member="Aditya Giri">
-        <div class="pv-member-avatar-ring">
-          <div class="pv-member-avatar-inner">
-            AG
-            <img src="aditya.jpg" alt="Aditya Giri" loading="lazy" onerror="this.remove()">
-          </div>
-        </div>
-        <div class="pv-member-title-row">
-          <h3>Short-Form — Paradoverse</h3>
-          <span class="pv-member-pill">Viral Reels Desk</span>
-        </div>
-        <div class="pv-member-sub">
-          <strong>Aditya Giri</strong> / Short-Form Viral Editor &bull; Paradoverse
-        </div>
-        <p class="pv-member-bio">
-          Focused on vertical hook engineering, beat-synced Reels, Shorts pacing, and high-retention caption styling.
-        </p>
-        <div class="pv-member-actions">
-          <a class="pv-member-btn wa" href="https://wa.me/917079050010?text=Hi%20Aditya%2C%20I%27d%20like%20to%20get%20Reels%20%2F%20Shorts%20edited." target="_blank" rel="noopener noreferrer">WhatsApp Aditya</a>
-          <a class="pv-member-btn ig" href="https://instagram.com/paradoverse.media" target="_blank" rel="noopener noreferrer">Instagram: @paradoverse.media &#8599;</a>
-          <button type="button" class="quick-wa-mini pv-member-desk-btn" data-select-member="Aditya Giri">Select Desk</button>
-        </div>
-      </article>
-
-      <!-- 6. SONU SHARMA -->
-      <article class="card pv-member-card" data-member="Sonu Sharma">
-        <div class="pv-member-avatar-ring">
-          <div class="pv-member-avatar-inner">
-            SS
-            <img src="sonu.jpg" alt="Sonu Sharma" loading="lazy" onerror="this.remove()">
-          </div>
-        </div>
-        <div class="pv-member-title-row">
-          <h3>Distribution — Paradoverse</h3>
-          <span class="pv-member-pill">Promo &amp; Reach Desk</span>
-        </div>
-        <div class="pv-member-sub">
-          <strong>Sonu Sharma</strong> / Distribution &amp; Reach &bull; Paradoverse
-        </div>
-        <p class="pv-member-bio">
-          Manages song and movie promotion waves across Instagram and YouTube to maximize organic audience reach.
-        </p>
-        <div class="pv-member-actions">
-          <a class="pv-member-btn wa" href="https://wa.me/917079050010?text=Hi%20Sonu%2C%20I%27d%20like%20to%20book%20a%20Song%20%2F%20Movie%20Promotion%20campaign." target="_blank" rel="noopener noreferrer">WhatsApp Sonu</a>
-          <a class="pv-member-btn ig" href="https://instagram.com/paradoverse.media" target="_blank" rel="noopener noreferrer">Instagram: @paradoverse.media &#8599;</a>
-          <button type="button" class="quick-wa-mini pv-member-desk-btn" data-select-member="Sonu Sharma">Select Desk</button>
-        </div>
-      </article>
-
-    </div>
-  </section>
 
   <!-- FAQ SECTION -->
   <section id="faq" data-page="faq">
@@ -3516,6 +3499,12 @@ body.pv-locked > *:not(#pvGateOverlay):not(#toastBanner) {
           <span>Home</span>
         </span>
       </button>
+      <button type="button" class="pv-side-item" data-drawer-nav="team">
+        <span class="pv-side-item-left">
+          <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+          <span>Our Team</span>
+        </span>
+      </button>
       <button type="button" class="pv-side-item" data-drawer-nav="services">
         <span class="pv-side-item-left">
           <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="3" rx="2"></rect><path d="m10 8 6 4-6 4V8Z"></path></svg>
@@ -3532,12 +3521,6 @@ body.pv-locked > *:not(#pvGateOverlay):not(#toastBanner) {
         <span class="pv-side-item-left">
           <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="2"></circle><path d="M16.24 7.76a6 6 0 0 1 0 8.49m-8.48-.01a6 6 0 0 1 0-8.49m11.31-2.82a10 10 0 0 1 0 14.14m-14.14 0a10 10 0 0 1 0-14.14"></path></svg>
           <span>Promo Network</span>
-        </span>
-      </button>
-      <button type="button" class="pv-side-item" data-drawer-nav="team">
-        <span class="pv-side-item-left">
-          <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-          <span>Our Team</span>
         </span>
       </button>
       <button type="button" class="pv-side-item" data-drawer-nav="faq">
@@ -3685,10 +3668,10 @@ body.pv-locked > *:not(#pvGateOverlay):not(#toastBanner) {
   <div class="wrap">
     <div class="footer-nav" aria-label="Footer Navigation">
       <button type="button" data-footer-nav="home">Home</button>
+      <button type="button" data-footer-nav="team">Team</button>
       <button type="button" data-footer-nav="services">Services</button>
       <button type="button" data-footer-nav="pricing">Pricing</button>
       <button type="button" data-footer-nav="network">Network</button>
-      <button type="button" data-footer-nav="team">Team</button>
       <button type="button" data-footer-nav="faq">FAQ</button>
       <button type="button" data-footer-nav="contact">Order</button>
     </div>
@@ -3804,7 +3787,7 @@ body.pv-locked > *:not(#pvGateOverlay):not(#toastBanner) {
 
   var state = {
     activeSection: "home",
-    singleTabMode: false,
+    singleTabMode: true,
     user: null,
     activePreset: "",
     videoFormat: "9:16 Vertical (Reels/Shorts)",
@@ -4103,12 +4086,12 @@ body.pv-locked > *:not(#pvGateOverlay):not(#toastBanner) {
   }
 
   function triggerCartBounce() {
-    ["openCartHeaderBtn", "dockCartBtn", "heroOpenCartBtn"].forEach(function (cid) {
-      var el = document.getElementById(cid);
-      if (!el) return;
-      el.classList.remove("pv-cart-pop");
-      void el.offsetWidth;
-      el.classList.add("pv-cart-pop");
+    var els = ["openCartHeaderBtn", "dockCartBtn", "heroOpenCartBtn"].map(function (cid) {
+      return document.getElementById(cid);
+    }).filter(Boolean);
+    for (var i = 0; i < els.length; i++) els[i].classList.remove("pv-cart-pop");
+    requestAnimationFrame(function () {
+      for (var j = 0; j < els.length; j++) els[j].classList.add("pv-cart-pop");
     });
   }
 
@@ -4578,10 +4561,12 @@ body.pv-locked > *:not(#pvGateOverlay):not(#toastBanner) {
     if (!targetTab || !liquidPill || !mainNav) return;
     var offsetLeft = targetTab.offsetLeft;
     var tabWidth = targetTab.offsetWidth;
+    var navScrollW = mainNav.scrollWidth;
+    var navClientW = mainNav.clientWidth;
     liquidPill.style.width = Math.max(44, tabWidth) + "px";
     liquidPill.style.transform = "translate3d(" + offsetLeft + "px, 0, 0)";
-    if (shouldScrollNav) {
-      var targetScroll = offsetLeft - (mainNav.clientWidth / 2) + (tabWidth / 2);
+    if (shouldScrollNav && navScrollW > navClientW + 2) {
+      var targetScroll = offsetLeft - (navClientW / 2) + (tabWidth / 2);
       mainNav.scrollTo({ left: Math.max(0, targetScroll), behavior: "smooth" });
     }
   }
@@ -4614,7 +4599,10 @@ body.pv-locked > *:not(#pvGateOverlay):not(#toastBanner) {
       for (var i = 0; i < sections.length; i++) {
         sections[i].classList.toggle("active-page", sections[i].id === sectionId);
       }
-      window.scrollTo({ top: 0, behavior: "auto" });
+      if (window.scrollY > 0) {
+        window.scrollTo(0, 0);
+      }
+      refreshScrollMetrics();
     } else {
       targetEl.scrollIntoView({ behavior: "smooth", block: "start" });
     }
@@ -4808,6 +4796,7 @@ body.pv-locked > *:not(#pvGateOverlay):not(#toastBanner) {
       });
       var currentTab = document.querySelector('.nav-tab[data-target="' + state.activeSection + '"]');
       if (currentTab) updateLiquidPill(currentTab, true);
+      refreshScrollMetrics();
     });
   }
 
@@ -5187,18 +5176,31 @@ body.pv-locked > *:not(#pvGateOverlay):not(#toastBanner) {
     sections.forEach(function (sec) { observer.observe(sec); });
   }
 
-  /* Single Passive rAF Scroll Listener (Progress Bar + Back-to-Top) */
+  /* Single Passive rAF Scroll Listener (Cached scroll height — zero layout thrash) */
   var progressBar = document.getElementById("pvScrollProgress");
   var backToTopBtn = document.getElementById("pvBackToTopBtn");
+  var cachedMaxScroll = 1;
   var rafScroll = false;
+  function refreshScrollMetrics() {
+    requestAnimationFrame(function () {
+      cachedMaxScroll = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+      var y = window.scrollY;
+      if (progressBar) {
+        var ratio = cachedMaxScroll <= 1 ? 0 : Math.min(1, Math.max(0, y / cachedMaxScroll));
+        progressBar.style.transform = "scaleX(" + ratio.toFixed(4) + ")";
+      }
+      if (backToTopBtn) {
+        backToTopBtn.classList.toggle("visible", y > 420);
+      }
+    });
+  }
   window.addEventListener("scroll", function () {
     if (rafScroll) return;
     rafScroll = true;
     requestAnimationFrame(function () {
       var y = window.scrollY;
       if (progressBar) {
-        var maxScroll = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
-        var ratio = Math.min(1, Math.max(0, y / maxScroll));
+        var ratio = cachedMaxScroll <= 1 ? 0 : Math.min(1, Math.max(0, y / cachedMaxScroll));
         progressBar.style.transform = "scaleX(" + ratio.toFixed(4) + ")";
       }
       if (backToTopBtn) {
@@ -5240,14 +5242,21 @@ body.pv-locked > *:not(#pvGateOverlay):not(#toastBanner) {
     applyChannelAndTeamSelectionUI();
     var activeTab = document.querySelector(".nav-tab.active") || navTabs[0];
     if (activeTab) updateLiquidPill(activeTab, false);
+    mainContainer.classList.toggle("single-tab-mode", state.singleTabMode);
+    if (viewModeLabel) viewModeLabel.textContent = state.singleTabMode ? "Tabs" : "Scroll";
+    sections.forEach(function (sec) {
+      sec.classList.toggle("active-page", !state.singleTabMode || sec.id === state.activeSection);
+    });
     renderAllCartUI();
     renderAccountAndDrawerUI();
     renderOrdersUI();
+    refreshScrollMetrics();
   }
 
   window.addEventListener("resize", function () {
     var activeTab = document.querySelector(".nav-tab.active") || navTabs[0];
     if (activeTab) updateLiquidPill(activeTab, false);
+    refreshScrollMetrics();
   }, { passive: true });
 
   if (document.readyState === "loading") {
