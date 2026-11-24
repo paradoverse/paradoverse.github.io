@@ -2633,6 +2633,162 @@ body.pv-locked > *:not(#pvGateOverlay):not(#toastBanner) {
   .pulse-dot::after { animation: none !important; }
   html { scroll-behavior: auto; }
 }
+/* === TEAM SPOTLIGHT CARDS === */
+.pv-team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
+  gap: 20px;
+}
+
+.pv-member-card {
+  text-align: center;
+  align-items: center;
+  padding: 34px 24px 28px;
+  border-radius: 26px;
+  background:
+    radial-gradient(ellipse 75% 48% at 50% 0%, rgba(56, 189, 248, 0.14), transparent 65%),
+    linear-gradient(180deg, #101726 0%, #090D16 100%);
+}
+
+.pv-member-avatar-ring {
+  position: relative;
+  width: 126px;
+  height: 126px;
+  margin: 0 auto 20px;
+  padding: 4px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #38BDF8 0%, #0A84FF 60%, #60A5FA 100%);
+  box-shadow: 0 0 28px rgba(56, 189, 248, 0.42);
+  flex-shrink: 0;
+}
+
+.pv-member-avatar-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+  background: linear-gradient(160deg, #162238 0%, #0B1120 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Outfit, -apple-system, Inter, sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  color: #7DD3FC;
+}
+
+.pv-member-avatar-inner img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 22%;
+  display: block;
+}
+
+.pv-member-title-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.pv-member-title-row h3 {
+  font-size: clamp(21px, 2.4vw, 25px);
+  font-weight: 700;
+  margin: 0;
+  color: var(--white);
+  letter-spacing: -0.025em;
+}
+
+.pv-member-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 14px;
+  border-radius: 999px;
+  background: rgba(14, 165, 233, 0.12);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  color: #E0F2FE;
+  font-size: 12.2px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.pv-member-sub {
+  font-size: 15px;
+  color: var(--text-secondary);
+  margin-bottom: 14px;
+  line-height: 1.45;
+}
+
+.pv-member-sub strong {
+  color: var(--white);
+  font-weight: 700;
+}
+
+.pv-member-bio {
+  max-width: 38ch;
+  margin: 0 auto 22px;
+  font-size: 14.4px;
+  line-height: 1.62;
+  color: var(--text-secondary);
+}
+
+.pv-member-actions {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 11px;
+  margin-top: auto;
+}
+
+.pv-member-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 44px;
+  padding: 10px 24px;
+  border-radius: 999px;
+  font-size: 14.5px;
+  font-weight: 700;
+  color: var(--white);
+  border: 0;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: transform 0.18s var(--ease-spring), filter 0.18s ease;
+}
+
+.pv-member-btn:hover {
+  transform: translate3d(0, -1.5px, 0);
+  filter: brightness(1.08);
+}
+
+.pv-member-btn:active {
+  transform: scale(0.96);
+}
+
+.pv-member-btn.wa {
+  background: linear-gradient(135deg, #25D366 0%, #1DB954 100%);
+  box-shadow: 0 8px 22px rgba(34, 197, 94, 0.28);
+}
+
+.pv-member-btn.ig {
+  background: linear-gradient(90deg, #EC4899 0%, #F43F5E 48%, #F97316 100%);
+  box-shadow: 0 8px 22px rgba(236, 72, 153, 0.28);
+}
+
+.pv-member-desk-btn {
+  margin-top: 2px;
+  min-height: 32px;
+  padding: 5px 14px;
+  font-size: 12px;
+}
 </style>
 </head>
 <body>
@@ -2978,77 +3134,163 @@ body.pv-locked > *:not(#pvGateOverlay):not(#toastBanner) {
     </div>
   </section>
 
-  <!-- TEAM SECTION -->
+<!-- TEAM SECTION -->
   <section id="team" data-page="team">
     <h2>The Paradoverse Team</h2>
-    <p class="sub">Optional: select any team member below to request their desk for your order.</p>
+    <p class="sub">Connect directly with any team member via WhatsApp or Instagram, or select their desk for your order.</p>
 
-    <div class="grid" id="teamGrid">
-      <article class="card" data-member="Manas Raj">
-        <div>
-          <div class="col-badge-row"><span class="col-tag">Founder &amp; Direction</span></div>
-          <h3>Manas Raj</h3>
-          <p>Founder of Paradoverse. Oversees creative direction, full-scale brand campaigns, VFX quality, and executive partnerships.</p>
+    <div class="pv-team-grid" id="teamGrid">
+
+      <!-- 1. MANAS RAJ -->
+      <article class="card pv-member-card" data-member="Manas Raj">
+        <div class="pv-member-avatar-ring">
+          <div class="pv-member-avatar-inner">
+            MR
+            <img src="manas.jpg" alt="Manas Raj" loading="lazy" onerror="this.remove()">
+          </div>
         </div>
-        <div class="card-actions">
-          <button type="button" class="quick-wa-mini" data-select-member="Manas Raj">Select Desk</button>
+        <div class="pv-member-title-row">
+          <h3>Founder — Paradoverse</h3>
+          <span class="pv-member-pill">Direct 1-on-1 Desk</span>
+        </div>
+        <div class="pv-member-sub">
+          <strong>Manas Raj</strong> / Founder &amp; Creative Director &bull; Paradoverse
+        </div>
+        <p class="pv-member-bio">
+          Founder of Paradoverse. Oversees creative direction, full-scale brand campaigns, VFX quality, and executive partnerships.
+        </p>
+        <div class="pv-member-actions">
+          <a class="pv-member-btn wa" href="https://wa.me/917079050010?text=Hi%20Manas%2C%20I%27d%20like%20to%20discuss%20a%20project%20with%20Paradoverse." target="_blank" rel="noopener noreferrer">WhatsApp Manas</a>
+          <a class="pv-member-btn ig" href="https://instagram.com/paradoverse.media" target="_blank" rel="noopener noreferrer">Instagram: @paradoverse.media &#8599;</a>
+          <button type="button" class="quick-wa-mini pv-member-desk-btn" data-select-member="Manas Raj">Select Desk</button>
         </div>
       </article>
 
-      <article class="card" data-member="Utkarsh Sharan">
-        <div>
-          <div class="col-badge-row"><span class="col-tag">Lead Editing &amp; VFX</span></div>
-          <h3>Utkarsh Sharan</h3>
-          <p>Specializes in high-retention cuts, cinematic color grading, seamless transitions, and visual effects compositing.</p>
+      <!-- 2. UTKARSH SHARAN -->
+      <article class="card pv-member-card" data-member="Utkarsh Sharan">
+        <div class="pv-member-avatar-ring">
+          <div class="pv-member-avatar-inner">
+            US
+            <img src="utkarsh.jpg" alt="Utkarsh Sharan" loading="lazy" onerror="this.remove()">
+          </div>
         </div>
-        <div class="card-actions">
-          <button type="button" class="quick-wa-mini" data-select-member="Utkarsh Sharan">Select Desk</button>
+        <div class="pv-member-title-row">
+          <h3>Lead VFX — Paradoverse</h3>
+          <span class="pv-member-pill">Editing &amp; VFX Desk</span>
         </div>
-      </article>
-
-      <article class="card" data-member="Mayank Raj">
-        <div>
-          <div class="col-badge-row"><span class="col-tag">Motion &amp; 3D Titles</span></div>
-          <h3>Mayank Raj</h3>
-          <p>Crafts dynamic typography, animated titles, logo stings, and visual polish for creators and brands.</p>
+        <div class="pv-member-sub">
+          <strong>Utkarsh Sharan</strong> / Lead Editing &amp; VFX &bull; Paradoverse
         </div>
-        <div class="card-actions">
-          <button type="button" class="quick-wa-mini" data-select-member="Mayank Raj">Select Desk</button>
-        </div>
-      </article>
-
-      <article class="card" data-member="Purushottam Giri">
-        <div>
-          <div class="col-badge-row"><span class="col-tag">Client Delivery &amp; Audio</span></div>
-          <h3>Purushottam Giri</h3>
-          <p>Coordinates multi-channel posting schedules, lyric video visuals, and rapid client turnaround.</p>
-        </div>
-        <div class="card-actions">
-          <button type="button" class="quick-wa-mini" data-select-member="Purushottam Giri">Select Desk</button>
+        <p class="pv-member-bio">
+          Specializes in high-retention cuts, cinematic color grading, seamless transitions, and visual effects compositing.
+        </p>
+        <div class="pv-member-actions">
+          <a class="pv-member-btn wa" href="https://wa.me/917079050010?text=Hi%20Utkarsh%2C%20I%27d%20like%20to%20book%20a%20Video%20Editing%20%2F%20VFX%20project." target="_blank" rel="noopener noreferrer">WhatsApp Utkarsh</a>
+          <a class="pv-member-btn ig" href="https://instagram.com/paradoverse.media" target="_blank" rel="noopener noreferrer">Instagram: @paradoverse.media &#8599;</a>
+          <button type="button" class="quick-wa-mini pv-member-desk-btn" data-select-member="Utkarsh Sharan">Select Desk</button>
         </div>
       </article>
 
-      <article class="card" data-member="Aditya Giri">
-        <div>
-          <div class="col-badge-row"><span class="col-tag">Short-Form Viral</span></div>
-          <h3>Aditya Giri</h3>
-          <p>Focused on vertical hook engineering, beat-synced Reels, Shorts pacing, and caption styling.</p>
+      <!-- 3. MAYANK RAJ -->
+      <article class="card pv-member-card" data-member="Mayank Raj">
+        <div class="pv-member-avatar-ring">
+          <div class="pv-member-avatar-inner">
+            MR
+            <img src="myank.jpg" alt="Mayank Raj" loading="lazy" onerror="this.remove()">
+          </div>
         </div>
-        <div class="card-actions">
-          <button type="button" class="quick-wa-mini" data-select-member="Aditya Giri">Select Desk</button>
+        <div class="pv-member-title-row">
+          <h3>Motion &amp; 3D — Paradoverse</h3>
+          <span class="pv-member-pill">3D &amp; Titles Desk</span>
+        </div>
+        <div class="pv-member-sub">
+          <strong>Mayank Raj</strong> / Motion &amp; 3D Titles &bull; Paradoverse
+        </div>
+        <p class="pv-member-bio">
+          Crafts dynamic typography, animated titles, logo stings, and visual polish for creators and brands.
+        </p>
+        <div class="pv-member-actions">
+          <a class="pv-member-btn wa" href="https://wa.me/917079050010?text=Hi%20Mayank%2C%20I%27d%20like%20to%20discuss%20a%20Motion%20%26%203D%20Titles%20project." target="_blank" rel="noopener noreferrer">WhatsApp Mayank</a>
+          <a class="pv-member-btn ig" href="https://instagram.com/paradoverse.media" target="_blank" rel="noopener noreferrer">Instagram: @paradoverse.media &#8599;</a>
+          <button type="button" class="quick-wa-mini pv-member-desk-btn" data-select-member="Mayank Raj">Select Desk</button>
         </div>
       </article>
 
-      <article class="card" data-member="Sonu Sharma">
-        <div>
-          <div class="col-badge-row"><span class="col-tag">Distribution &amp; Reach</span></div>
-          <h3>Sonu Sharma</h3>
-          <p>Manages song and movie promotion waves across Instagram and YouTube to maximize audience reach.</p>
+      <!-- 4. PURUSHOTTAM GIRI -->
+      <article class="card pv-member-card" data-member="Purushottam Giri">
+        <div class="pv-member-avatar-ring">
+          <div class="pv-member-avatar-inner">
+            PG
+            <img src="purushottam.jpg" alt="Purushottam Giri" loading="lazy" onerror="this.remove()">
+          </div>
         </div>
-        <div class="card-actions">
-          <button type="button" class="quick-wa-mini" data-select-member="Sonu Sharma">Select Desk</button>
+        <div class="pv-member-title-row">
+          <h3>Delivery &amp; Audio — Paradoverse</h3>
+          <span class="pv-member-pill">Client Delivery Desk</span>
+        </div>
+        <div class="pv-member-sub">
+          <strong>Purushottam Giri</strong> / Client Delivery &amp; Audio &bull; Paradoverse
+        </div>
+        <p class="pv-member-bio">
+          Coordinates multi-channel posting schedules, lyric video visuals, and rapid client turnaround from brief to delivery.
+        </p>
+        <div class="pv-member-actions">
+          <a class="pv-member-btn wa" href="https://wa.me/917079050010?text=Hi%20Purushottam%2C%20I%27d%20like%20to%20coordinate%20a%20Paradoverse%20order." target="_blank" rel="noopener noreferrer">WhatsApp Purushottam</a>
+          <a class="pv-member-btn ig" href="https://instagram.com/purushottam_giri_2009" target="_blank" rel="noopener noreferrer">Instagram: @purushottam_giri_2009 &#8599;</a>
+          <button type="button" class="quick-wa-mini pv-member-desk-btn" data-select-member="Purushottam Giri">Select Desk</button>
         </div>
       </article>
+
+      <!-- 5. ADITYA GIRI -->
+      <article class="card pv-member-card" data-member="Aditya Giri">
+        <div class="pv-member-avatar-ring">
+          <div class="pv-member-avatar-inner">
+            AG
+            <img src="aditya.jpg" alt="Aditya Giri" loading="lazy" onerror="this.remove()">
+          </div>
+        </div>
+        <div class="pv-member-title-row">
+          <h3>Short-Form — Paradoverse</h3>
+          <span class="pv-member-pill">Viral Reels Desk</span>
+        </div>
+        <div class="pv-member-sub">
+          <strong>Aditya Giri</strong> / Short-Form Viral Editor &bull; Paradoverse
+        </div>
+        <p class="pv-member-bio">
+          Focused on vertical hook engineering, beat-synced Reels, Shorts pacing, and high-retention caption styling.
+        </p>
+        <div class="pv-member-actions">
+          <a class="pv-member-btn wa" href="https://wa.me/917079050010?text=Hi%20Aditya%2C%20I%27d%20like%20to%20get%20Reels%20%2F%20Shorts%20edited." target="_blank" rel="noopener noreferrer">WhatsApp Aditya</a>
+          <a class="pv-member-btn ig" href="https://instagram.com/paradoverse.media" target="_blank" rel="noopener noreferrer">Instagram: @paradoverse.media &#8599;</a>
+          <button type="button" class="quick-wa-mini pv-member-desk-btn" data-select-member="Aditya Giri">Select Desk</button>
+        </div>
+      </article>
+
+      <!-- 6. SONU SHARMA -->
+      <article class="card pv-member-card" data-member="Sonu Sharma">
+        <div class="pv-member-avatar-ring">
+          <div class="pv-member-avatar-inner">
+            SS
+            <img src="sonu.jpg" alt="Sonu Sharma" loading="lazy" onerror="this.remove()">
+          </div>
+        </div>
+        <div class="pv-member-title-row">
+          <h3>Distribution — Paradoverse</h3>
+          <span class="pv-member-pill">Promo &amp; Reach Desk</span>
+        </div>
+        <div class="pv-member-sub">
+          <strong>Sonu Sharma</strong> / Distribution &amp; Reach &bull; Paradoverse
+        </div>
+        <p class="pv-member-bio">
+          Manages song and movie promotion waves across Instagram and YouTube to maximize organic audience reach.
+        </p>
+        <div class="pv-member-actions">
+          <a class="pv-member-btn wa" href="https://wa.me/917079050010?text=Hi%20Sonu%2C%20I%27d%20like%20to%20book%20a%20Song%20%2F%20Movie%20Promotion%20campaign." target="_blank" rel="noopener noreferrer">WhatsApp Sonu</a>
+          <a class="pv-member-btn ig" href="https://instagram.com/paradoverse.media" target="_blank" rel="noopener noreferrer">Instagram: @paradoverse.media &#8599;</a>
+          <button type="button" class="quick-wa-mini pv-member-desk-btn" data-select-member="Sonu Sharma">Select Desk</button>
+        </div>
+      </article>
+
     </div>
   </section>
 
